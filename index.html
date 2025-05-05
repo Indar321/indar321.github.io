@@ -19,7 +19,6 @@
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
     overflow-x: hidden;
-    scroll-behavior: smooth;
   }
   a {
     text-decoration: none;
@@ -33,20 +32,9 @@
     user-select: none;
     pointer-events: none;
   }
-  button {
-    cursor: pointer;
-    background: none;
-    border: none;
+  button, input[type="email"] {
     font-family: inherit;
   }
-
-  /* Container */
-  .container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
   /* Header and Navigation */
   header {
     position: fixed;
@@ -66,7 +54,7 @@
   .logo {
     font-weight: 700;
     font-size: 1.5rem;
-    color: #008060; /* Shopify green */
+    color: #008060;
     letter-spacing: 1px;
     user-select: none;
   }
@@ -79,14 +67,12 @@
     font-size: 0.95rem;
     color: #111;
     transition: color 0.3s ease;
-    position: relative;
   }
   .nav-links a:hover,
   .nav-links a:focus {
     color: #008060;
   }
-
-  /* Section headers */
+  /* Section Headers */
   h2.section-title {
     font-weight: 900;
     font-size: 2rem;
@@ -94,7 +80,6 @@
     margin-bottom: 2rem;
     text-align: center;
   }
-
   /* Hero Section */
   .hero {
     display: flex;
@@ -103,7 +88,7 @@
     align-items: flex-start;
     height: 90vh;
     max-height: 600px;
-    padding-top: 80px; /* height of header */
+    padding-top: 80px;
     padding-left: 1rem;
     padding-right: 1rem;
     background: linear-gradient(135deg, #eaf8f1 0%, #ffffff 100%);
@@ -142,137 +127,235 @@
     box-shadow: 0 8px 16px rgb(0 102 68 / 0.45);
     outline: none;
   }
-
-  /* Sections */
   section {
-    padding: 4rem 1rem 5rem;
     max-width: 1140px;
-    margin: 0 auto;
+    margin: 3rem auto 5rem auto;
+    padding: 0 1rem;
   }
 
-  /* Carousel Container */
+  /* Carousel base styles */
   .carousel {
     position: relative;
-    max-width: 100%;
-    height: 220px;
-    margin-bottom: 2rem;
     overflow: hidden;
     border-radius: 12px;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    max-height: 280px;
   }
   .carousel-track {
     display: flex;
     transition: transform 0.5s ease;
-    will-change: transform;
-    height: 220px;
   }
   .carousel-slide {
     min-width: 100%;
-    flex-shrink: 0;
-    height: 220px;
+    user-select: none;
     position: relative;
   }
   .carousel-slide img {
-    border-radius: 12px;
-    object-fit: cover;
     width: 100%;
-    height: 100%;
-    user-select: none;
+    height: 280px;
+    object-fit: cover;
+    pointer-events: none;
   }
   .carousel-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 128, 96, 0.8);
+    background: rgba(0,128,96,0.8);
     border: none;
-    color: white;
     width: 36px;
     height: 36px;
     border-radius: 50%;
+    color: white;
+    font-size: 18px;
     cursor: pointer;
     z-index: 10;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 20px;
-    transition: background 0.3s ease;
-    user-select: none;
+    justify-content: center;
+    transition: background-color 0.3s ease;
   }
   .carousel-arrow:hover,
   .carousel-arrow:focus {
-    background: #006644;
+    background-color: #006644;
     outline: none;
   }
   .carousel-arrow.prev {
-    left: 10px;
+    left: 12px;
   }
   .carousel-arrow.next {
-    right: 10px;
+    right: 12px;
   }
 
-  /* About Section */
-  #about {
-    background: #fefefe;
-    border-radius: 12px;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.04);
-    padding: 2rem 2rem 3rem;
-  }
-  #about h2 {
-    margin-bottom: 1.5rem;
-  }
-  #about .detail-group {
-    margin-bottom: 2rem;
-  }
-  #about .detail-group h3 {
-    font-size: 1.3rem;
+  /* Profession & Skills Carousel */
+  #profession-skills-carousel .carousel-slide {
+    padding: 1.5rem;
+    background: #f6fcfb;
+    color: #003d33;
     font-weight: 700;
-    margin-bottom: 1rem;
-    color: #004632;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #008060;
   }
-  #about ul {
-    list-style: none;
-    padding-left: 1rem;
-    color: #444;
+  #profession-skills-carousel .carousel-slide p {
+    max-width: 650px;
+    font-weight: 400;
     font-size: 1rem;
+    margin: 0;
     line-height: 1.4;
   }
-  #about ul li {
-    margin-bottom: 0.45rem;
+
+  /* Tools & Platforms with percentage bars */
+  #tools-platforms {
+    max-width: 500px;
+    margin: 0 auto 3rem;
   }
-  #about ul li strong {
-    color: #008060;
+  #tools-platforms h2 {
+    margin-bottom: 1rem;
+  }
+  .tool-bar {
+    margin-bottom: 1rem;
+  }
+  .tool-label {
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: #004632;
+  }
+  .progress-bar-bg {
+    width: 100%;
+    height: 18px;
+    background: #e6f0ec;
+    border-radius: 9px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background-color: #008060;
+    border-radius: 9px 0 0 9px;
+    width: 0;
+    transition: width 1s ease-out;
   }
 
   /* Businesses Section */
-  #businesses {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.04);
-    padding: 2rem 2rem 3rem;
-  }
-  #businesses h2 {
-    margin-bottom: 1.5rem;
-  }
   .business-item {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
   .business-item h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 800;
-    color: #00503c;
+    color: #004832;
     margin-bottom: 0.5rem;
   }
-  .business-item p {
+  .business-carousel {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 100%;
+    height: 280px;
+    margin-bottom: 0.5rem;
+  }
+  .business-carousel .carousel-track {
+    height: 280px;
+  }
+  .business-carousel .carousel-slide img {
+    height: 280px;
+  }
+  .business-dropdown {
+    margin-top: 0.4rem;
+  }
+  .dropdown-toggle {
+    font-weight: 700;
+    background: #f0faf7;
+    border: 2px solid #008060;
+    border-radius: 6px;
+    padding: 0.45rem 1rem;
+    cursor: pointer;
+    user-select: none;
+    color: #00583d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .dropdown-toggle:hover,
+  .dropdown-toggle:focus {
+    background: #daf3e6;
+    outline: none;
+  }
+  .dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background: #e6f4f1;
+    border-radius: 0 0 8px 8px;
+    padding: 0 1rem;
+    color: #003927;
+    font-size: 0.95rem;
+  }
+  .dropdown-content.open {
+    max-height: 1000px; /* sufficiently large for content */
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+  }
+  .dropdown-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  .dropdown-arrow.open {
+    transform: rotate(180deg);
+  }
+
+  /* Subscribe Section bottom right */
+  #subscribe-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #008060;
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgb(0 128 96 / 0.5);
+    padding: 1rem 1.5rem;
+    max-width: 320px;
+    z-index: 1100;
+  }
+  #subscribe-container h4 {
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+  }
+  #subscribe-container p {
+    margin: 0 0 0.8rem 0;
+    font-size: 0.9rem;
+    color: #d1f1dd;
+  }
+  #subscribe-form {
+    display: flex;
+    gap: 0.5rem;
+  }
+  #subscribe-form input[type="email"] {
+    flex-grow: 1;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
     font-size: 1rem;
-    color: #444;
-    margin-bottom: 0.5rem;
+    outline-offset: 2px;
   }
-  .business-item a {
-    color: #008060;
-    font-weight: 600;
+  #subscribe-form input[type="email"]:focus {
+    outline: 2px solid #004d33;
   }
-  .business-item a:hover,
-  .business-item a:focus {
-    color: #006644;
+  #subscribe-form button {
+    background: #004d33;
+    color: white;
+    border: none;
+    font-weight: 700;
+    padding: 0 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #subscribe-form button:hover,
+  #subscribe-form button:focus {
+    background: #003322;
     outline: none;
   }
 
@@ -282,20 +365,20 @@
     color: #a7cfc9;
     padding: 1rem 1rem 2rem;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: flex-start;
     max-width: 1140px;
     margin: 0 auto;
     font-size: 0.9rem;
     user-select: none;
+    flex-wrap: wrap;
+    column-gap: 2rem;
   }
   .footer-left {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
     align-items: flex-start;
-    flex: 1 1 30%;
-    min-width: 200px;
   }
   .footer-social {
     display: flex;
@@ -321,63 +404,6 @@
   .footer-trademark {
     font-size: 0.85rem;
     color: #88b4a9;
-  }
-  .footer-center {
-    flex: 1 1 30%;
-    min-width: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .footer-center label {
-    color: #a7cfc9;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-  }
-  .footer-center form {
-    display: flex;
-    gap: 0.4rem;
-    width: 100%;
-    max-width: 300px;
-  }
-  .footer-center input[type="email"] {
-    flex-grow: 1;
-    padding: 0.5rem 0.75rem;
-    border: none;
-    border-radius: 9999px;
-    font-size: 0.9rem;
-    background: #eaf8f1;
-    color: #043d3d;
-    outline: none;
-    transition: background-color 0.3s ease;
-  }
-  .footer-center input[type="email"]:focus {
-    background: #d3ece3;
-  }
-  .footer-center button {
-    padding: 0 1.25rem;
-    border-radius: 9999px;
-    background-color: #008060;
-    color: white;
-    font-weight: 700;
-    transition: background-color 0.3s ease;
-  }
-  .footer-center button:hover,
-  .footer-center button:focus {
-    background-color: #006644;
-    outline: none;
-  }
-  .footer-right {
-    flex: 1 1 30%;
-    min-width: 180px;
-    text-align: right;
-    font-weight: 600;
-    color: #a7cfc9;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
   }
 
   /* Responsive */
@@ -409,23 +435,26 @@
       order: 1;
     }
     section {
-      padding: 3rem 1rem 4rem;
+      margin: 2rem 1rem 4rem;
+      padding: 0;
     }
-    #about, #businesses {
-      padding: 1.5rem 1rem 2rem;
+    #subscribe-container {
+      max-width: 90vw;
+      bottom: 15px;
+      right: 7vw;
+      padding: 0.8rem 1rem;
     }
     footer {
       flex-direction: column;
-      gap: 1rem;
-      text-align: center;
-    }
-    .footer-left, .footer-center, .footer-right {
-      min-width: auto;
-      text-align: center;
+      gap: 0.8rem;
+      align-items: center;
       justify-content: center;
+      font-size: 0.85rem;
+      padding-bottom: 3rem;
     }
-    .footer-right {
-      order: 3;
+    .footer-left {
+      align-items: center;
+      gap: 0.5rem;
     }
   }
 </style>
@@ -436,7 +465,8 @@
   <nav>
     <div class="logo" tabindex="0" aria-label="Home">Indrajeet Pisda</div>
     <div class="nav-links" role="navigation" aria-label="Primary navigation">
-      <a href="#about" tabindex="0">About</a>
+      <a href="#profession-skills" tabindex="0">Profession</a>
+      <a href="#tools-platforms" tabindex="0">Tools & Platforms</a>
       <a href="#businesses" tabindex="0">Businesses</a>
     </div>
   </nav>
@@ -445,91 +475,173 @@
 <section class="hero" role="banner" aria-label="Introduction">
   <h1>Welcome to my Portfolio</h1>
   <p>Branding Expert, Creative Designer, and Graphic Designer passionate about crafting distinctive and authentic visual identities.</p>
-  <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})" aria-label="Learn more about me">Learn More About Me</button>
+  <button onclick="document.getElementById('profession-skills').scrollIntoView({behavior: 'smooth'})" aria-label="Learn more about profession and skills">Learn More About Me</button>
 </section>
 
-<section id="about" aria-label="Personal Details and Skills">
-  <h2 class="section-title">Personal Details & Skills</h2>
-  <div class="carousel" aria-label="About section image carousel">
-    <button class="carousel-arrow prev" aria-label="Previous image About">&#10094;</button>
-    <div class="carousel-track" data-carousel="about">
-      <div class="carousel-slide">
-        <img src="https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Creative work desk with design tools" />
+<section id="profession-skills" aria-label="Profession and Skills with carousel">
+  <h2 class="section-title">Profession & Skills</h2>
+  <div class="carousel" aria-roledescription="carousel" aria-label="Profession and individual skills carousel" id="profession-skills-carousel">
+    <button class="carousel-arrow prev" aria-label="Previous profession/skill">&#10094;</button>
+    <div class="carousel-track" tabindex="0">
+      <div class="carousel-slide" aria-hidden="false" role="group" aria-roledescription="slide" aria-label="Branding Expert">
+        <p><strong>Branding Expert</strong>: Creating cohesive brand identities that tell a compelling story and connect deeply with audiences.</p>
       </div>
-      <div class="carousel-slide">
-        <img src="https://images.pexels.com/photos/313691/pexels-photo-313691.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Designer workspace with pen tablet and laptop" />
+      <div class="carousel-slide" aria-hidden="true" role="group" aria-roledescription="slide" aria-label="Creative Designer">
+        <p><strong>Creative Designer</strong>: Designing unique, innovative visuals across digital platforms for maximum impact and clarity.</p>
       </div>
-      <div class="carousel-slide">
-        <img src="https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Professional creative team meeting" />
+      <div class="carousel-slide" aria-hidden="true" role="group" aria-roledescription="slide" aria-label="Graphic Designer">
+        <p><strong>Graphic Designer</strong>: Crafting memorable graphics and layouts that balance aesthetics and communication goals.</p>
       </div>
     </div>
-    <button class="carousel-arrow next" aria-label="Next image About">&#10095;</button>
-  </div>
-  <div class="detail-group">
-    <h3>Full Name</h3>
-    <p>Indrajeet Pisda</p>
-  </div>
-  <div class="detail-group">
-    <h3>Profession & Skills</h3>
-    <ul>
-      <li>Branding Expert</li>
-      <li>Creative Designer</li>
-      <li>Graphic Designer</li>
-    </ul>
-  </div>
-  <div class="detail-group">
-    <h3>Tools & Platforms</h3>
-    <ul>
-      <li>Adobe After Effects (AE)</li>
-      <li>Adobe Photoshop (AP)</li>
-      <li>Canva</li>
-      <li>Figma</li>
-      <li>Prompt Engineering</li>
-    </ul>
+    <button class="carousel-arrow next" aria-label="Next profession/skill">&#10095;</button>
   </div>
 </section>
 
-<section id="businesses" aria-label="Businesses and Brands">
+<section id="tools-platforms" aria-label="Tools and Platforms skill percentage">
+  <h2 class="section-title">Tools & Platforms</h2>
+  <div class="tool-bar">
+    <div class="tool-label">Adobe After Effects (AE)</div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" style="width: 90%;"></div>
+    </div>
+  </div>
+  <div class="tool-bar">
+    <div class="tool-label">Adobe Photoshop (AP)</div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" style="width: 85%;"></div>
+    </div>
+  </div>
+  <div class="tool-bar">
+    <div class="tool-label">Canva</div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" style="width: 80%;"></div>
+    </div>
+  </div>
+  <div class="tool-bar">
+    <div class="tool-label">Figma</div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" style="width: 75%;"></div>
+    </div>
+  </div>
+  <div class="tool-bar">
+    <div class="tool-label">Prompt Engineering</div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" style="width: 70%;"></div>
+    </div>
+  </div>
+</section>
+
+<section id="businesses" aria-label="Businesses with image carousel and dropdown details">
   <h2 class="section-title">Businesses & Brands</h2>
-  <div class="carousel" aria-label="Businesses section image carousel">
-    <button class="carousel-arrow prev" aria-label="Previous image Businesses">&#10094;</button>
-    <div class="carousel-track" data-carousel="businesses">
-      <div class="carousel-slide">
-        <img src="https://images.pexels.com/photos/1619311/pexels-photo-1619311.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Printed T-Shirts hanging in a store" />
+
+  <!-- Nirvaan -->
+  <div class="business-item">
+    <h3>Nirvaan</h3>
+    <div class="business-carousel carousel" aria-label="Nirvaan image carousel">
+      <button class="carousel-arrow prev" aria-label="Previous Nirvaan image">&#10094;</button>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="https://images.pexels.com/photos/1619311/pexels-photo-1619311.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Printed T-Shirts hanging in a store" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Fashion clothing display" />
+        </div>
       </div>
-      <div class="carousel-slide">
-        <img src="https://images.pexels.com/photos/6913179/pexels-photo-6913179.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Fashion clothing display" />
-      </div>
-      <div class="carousel-slide">
-        <img src="https://images.pexels.com/photos/328407/pexels-photo-328407.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Water flowing from faucet" />
-      </div>
-      <div class="carousel-slide">
-        <img src="https://images.pexels.com/photos/3183198/pexels-photo-3183198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Creative digital platform interface" />
+      <button class="carousel-arrow next" aria-label="Next Nirvaan image">&#10095;</button>
+    </div>
+    <div class="business-dropdown">
+      <button class="dropdown-toggle" aria-expanded="false" aria-controls="nirvaan-details">
+        Details
+        <span class="dropdown-arrow">&#9660;</span>
+      </button>
+      <div class="dropdown-content" id="nirvaan-details" hidden>
+        <p><strong>Type:</strong> Printed T-shirt & Fashion Brand</p>
+        <p><strong>Products:</strong> Oversized T-shirts, Premium T-shirts, Crop Tops, Jackets, Hoodies, Belts, Wallets, Rings, Ear Tops</p>
+        <p><strong>Website:</strong> <a href="https://nirvaan.store" target="_blank" rel="noopener noreferrer">Nirvaan.Store</a></p>
+        <p><strong>Marketing:</strong> SEO-friendly product descriptions and blog content in progress</p>
       </div>
     </div>
-    <button class="carousel-arrow next" aria-label="Next image Businesses">&#10095;</button>
   </div>
-  <div class="business-item" tabindex="0">
-    <h3>Nirvaan</h3>
-    <p><strong>Type:</strong> Printed T-shirt & Fashion Brand</p>
-    <p><strong>Products:</strong> Oversized T-shirts, Premium T-shirts, Crop Tops, Jackets, Hoodies, Belts, Wallets, Rings, Ear Tops</p>
-    <p><strong>Website:</strong> <a href="https://nirvaan.store" target="_blank" rel="noopener noreferrer">Nirvaan.Store</a></p>
-    <p><strong>Marketing:</strong> SEO-friendly product descriptions and blog content in progress</p>
-  </div>
-  <div class="business-item" tabindex="0">
+
+  <!-- Urban Store -->
+  <div class="business-item">
     <h3>Urban Store</h3>
-    <p><strong>Tagline:</strong> "All Products, All Possibilities"</p>
+    <div class="business-carousel carousel" aria-label="Urban Store image carousel">
+      <button class="carousel-arrow prev" aria-label="Previous Urban Store image">&#10094;</button>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="https://images.pexels.com/photos/6913179/pexels-photo-6913179.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Urban fashion store interior" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.pexels.com/photos/2983463/pexels-photo-2983463.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Urban clothing hanging racks" />
+        </div>
+      </div>
+      <button class="carousel-arrow next" aria-label="Next Urban Store image">&#10095;</button>
+    </div>
+    <div class="business-dropdown">
+      <button class="dropdown-toggle" aria-expanded="false" aria-controls="urbanstore-details">
+        Details
+        <span class="dropdown-arrow">&#9660;</span>
+      </button>
+      <div class="dropdown-content" id="urbanstore-details" hidden>
+        <p><strong>Tagline:</strong> "All Products, All Possibilities"</p>
+      </div>
+    </div>
   </div>
-  <div class="business-item" tabindex="0">
+
+  <!-- Aayu Water Solution -->
+  <div class="business-item">
     <h3>Aayu Water Solution</h3>
-    <p><strong>Type:</strong> Water Solution Business</p>
-    <p><strong>Website Design:</strong> Modern, professional, e-commerce enabled</p>
-    <p><strong>Theme Colors:</strong> Blue & White</p>
+    <div class="business-carousel carousel" aria-label="Aayu Water Solution image carousel">
+      <button class="carousel-arrow prev" aria-label="Previous Aayu Water Solution image">&#10094;</button>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="https://images.pexels.com/photos/328407/pexels-photo-328407.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Water flowing from faucet" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Water purification system" />
+        </div>
+      </div>
+      <button class="carousel-arrow next" aria-label="Next Aayu Water Solution image">&#10095;</button>
+    </div>
+    <div class="business-dropdown">
+      <button class="dropdown-toggle" aria-expanded="false" aria-controls="aayu-details">
+        Details
+        <span class="dropdown-arrow">&#9660;</span>
+      </button>
+      <div class="dropdown-content" id="aayu-details" hidden>
+        <p><strong>Type:</strong> Water Solution Business</p>
+        <p><strong>Website Design:</strong> Modern, professional, e-commerce enabled</p>
+        <p><strong>Theme Colors:</strong> Blue &amp; White</p>
+      </div>
+    </div>
   </div>
-  <div class="business-item" tabindex="0">
+
+  <!-- DigitalTrade.ai -->
+  <div class="business-item">
     <h3>DigitalTrade.ai</h3>
-    <p><strong>Type:</strong> Platform for digital creators</p>
-    <p><strong>Instagram:</strong> <a href="https://instagram.com/digitaltrade.ai" target="_blank" rel="noopener noreferrer">@digitaltrade.ai</a></p>
+    <div class="business-carousel carousel" aria-label="DigitalTrade.ai image carousel">
+      <button class="carousel-arrow prev" aria-label="Previous DigitalTrade.ai image">&#10094;</button>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="https://images.pexels.com/photos/3183198/pexels-photo-3183198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Digital platform interface" />
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.pexels.com/photos/1181407/pexels-photo-1181407.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Creative digital workspace" />
+        </div>
+      </div>
+      <button class="carousel-arrow next" aria-label="Next DigitalTrade.ai image">&#10095;</button>
+    </div>
+    <div class="business-dropdown">
+      <button class="dropdown-toggle" aria-expanded="false" aria-controls="digitaltrade-details">
+        Details
+        <span class="dropdown-arrow">&#9660;</span>
+      </button>
+      <div class="dropdown-content" id="digitaltrade-details" hidden>
+        <p><strong>Type:</strong> Platform for digital creators</p>
+        <p><strong>Instagram:</strong> <a href="https://instagram.com/digitaltrade.ai" target="_blank" rel="noopener noreferrer">@digitaltrade.ai</a></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -537,116 +649,142 @@
   <div class="footer-left" aria-label="Social media and trademark">
     <div class="footer-social" aria-label="Social media links">
       <a href="https://instagram.com/digitaltrade.ai" target="_blank" rel="noopener noreferrer" aria-label="Instagram" tabindex="0" title="Instagram">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.75-.25a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/></svg>
+        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.75-.25a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/></svg>
       </a>
       <a href="https://linkedin.com/in/indrajeet-pisda" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" tabindex="0" title="LinkedIn">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.48 2.48 0 11-.001 4.961A2.48 2.48 0 014.98 3.5zm.02 4.75H2v13.75h3v-13.75zM8.5 8.5h2.88v1.82h.04c.4-.75 1.36-1.54 2.8-1.54 3 0 3.55 2 3.55 4.6v5.88h-3v-5.22c0-1.25-.02-2.85-1.73-2.85-1.73 0-1.99 1.35-1.99 2.75v5.33h-3v-13.75z"/></svg>
+        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M4.98 3.5a2.48 2.48 0 11-.001 4.961A2.48 2.48 0 014.98 3.5zm.02 4.75H2v13.75h3v-13.75zM8.5 8.5h2.88v1.82h.04c.4-.75 1.36-1.54 2.8-1.54 3 0 3.55 2 3.55 4.6v5.88h-3v-5.22c0-1.25-.02-2.85-1.73-2.85-1.73 0-1.99 1.35-1.99 2.75v5.33h-3v-13.75z"/></svg>
       </a>
       <a href="https://github.com/indar321" target="_blank" rel="noopener noreferrer" aria-label="GitHub" tabindex="0" title="GitHub">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C6.48 2 2 6.48 2 12a10 10 0 006.84 9.53c.5.1.68-.22.68-.48v-1.71c-2.78.6-3.37-1.34-3.37-1.34-.46-1.17-1.12-1.48-1.12-1.48-.92-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.36 1.08 2.94.83.1-.65.36-1.08.66-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.08.39-1.97 1.03-2.67-.1-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.02a9.5 9.5 0 015 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.36.2 2.37.1 2.62.64.7 1.04 1.59 1.04 2.67 0 3.85-2.34 4.7-4.58 4.94.37.32.7.95.7 1.92v2.85c0 .27.18.58.7.48A10 10 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M12 2C6.48 2 2 6.48 2 12a10 10 0 006.84 9.53c.5.1.68-.22.68-.48v-1.71c-2.78.6-3.37-1.34-3.37-1.34-.46-1.17-1.12-1.48-1.12-1.48-.92-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.36 1.08 2.94.83.1-.65.36-1.08.66-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.08.39-1.97 1.03-2.67-.1-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.02a9.5 9.5 0 015 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.36.2 2.37.1 2.62.64.7 1.04 1.59 1.04 2.67 0 3.85-2.34 4.7-4.58 4.94.37.32.7.95.7 1.92v2.85c0 .27.18.58.7.48A10 10 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
       </a>
       <a href="https://behance.net/indrajeetpisda" target="_blank" rel="noopener noreferrer" aria-label="Behance" tabindex="0" title="Behance">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 9.8h-4.5v1.5h4.3c-.2.9-1.1 2.5-3.9 2.5-3.3 0-3.9-2.2-3.9-2.8 0-1.8 1.4-2.9 3-2.9 2.3 0 3.3 1.7 3.4 2.5zm-4 3c1 0 1.6-.7 1.9-1.4h-2.4v.1c.1.6.6 1.3 1.5 1.3zm-5-6.5h5v1h-4v1h3v1h-3v4h-1.5V6.3zm-2.5 6.3c-.3 0-.5-.3-.5-.5V8h5v.5c0 .3-.3.5-.5.5H9zM2 6.8v10.3H8.5C13 17.2 14 13.6 14 12c0-2.7-1.4-5.2-6-4.8H2zm5.2 7.3H3.5v-5h3.7c1.9 0 3.1 1.1 3.1 2.5 0 1.2-.6 2.5-3.1 2.5z"/></svg>
+        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M22 9.8h-4.5v1.5h4.3c-.2.9-1.1 2.5-3.9 2.5-3.3 0-3.9-2.2-3.9-2.8 0-1.8 1.4-2.9 3-2.9 2.3 0 3.3 1.7 3.4 2.5zm-4 3c1 0 1.6-.7 1.9-1.4h-2.4v.1c.1.6.6 1.3 1.5 1.3zm-5-6.5h5v1h-4v1h3v1h-3v4h-1.5V6.3zm-2.5 6.3c-.3 0-.5-.3-.5-.5V8h5v.5c0 .3-.3.5-.5.5H9zM2 6.8v10.3H8.5C13 17.2 14 13.6 14 12c0-2.7-1.4-5.2-6-4.8H2zm5.2 7.3H3.5v-5h3.7c1.9 0 3.1 1.1 3.1 2.5 0 1.2-.6 2.5-3.1 2.5z"/></svg>
       </a>
       <a href="https://dribbble.com/indrajeetpisda" target="_blank" rel="noopener noreferrer" aria-label="Dribbble" tabindex="0" title="Dribbble">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C6.5 2 2 6.5 2 12c0 5.5 4.5 10 10 10s10-4.5 10-10C22 6.5 17.5 2 12 2zm6.2 3.1A8.06 8.06 0 0119.9 12c0 .26-.02.53-.04.79A14.06 14.06 0 0013 9.8a42.8 42.8 0 015.2-4.7zM12 4c3.3 0 6 2 7 4.9a45.17 45.17 0 00-9.2 1.9 41.6 41.6 0 00-3.2-5.1A8.5 8.5 0 0112 4zm-7.5.8a8.4 8.4 0 013.2 4.5 43.75 43.75 0 00-6.3 1.6 8.1 8.1 0 013.1-6.1zm-2.2 9A45.75 45.75 0 016.3 16c.1 0 .6.1 1.3.1a40.88 40.88 0 012.8-8.4 46.2 46.2 0 00-7.9-2A8.04 8.04 0 012.3 14.1zm14.4 4.7A8.03 8.03 0 0112 20c-1.1 0-2.2-.4-3.1-1.1a39.57 39.57 0 01-2-10.2c0-.3 0-.6.03-.9 3.1-1 6.9-1 11 3.2a7.95 7.95 0 01-3.3 12zm-1.9-1c.7-1.1 1-2.5 1.2-3.8a40.61 40.61 0 013.4 2.3 7.7 7.7 0 01-4.6 1.5zm3.7-3.6c-.8-.9-1.7-1.7-2.8-2.4a42.36 42.36 0 014.3-3.5 7.77 7.77 0 01-1.5 5.9z"/></svg>
+        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M12 2C6.5 2 2 6.5 2 12c0 5.5 4.5 10 10 10s10-4.5 10-10C22 6.5 17.5 2 12 2zm6.2 3.1A8.06 8.06 0 0119.9 12c0 .26-.02.53-.04.79A14.06 14.06 0 0013 9.8a42.8 42.8 0 015.2-4.7zM12 4c3.3 0 6 2 7 4.9a45.17 45.17 0 00-9.2 1.9 41.6 41.6 0 00-3.2-5.1A8.5 8.5 0 0112 4zm-7.5.8a8.4 8.4 0 013.2 4.5 43.75 43.75 0 00-6.3 1.6 8.1 8.1 0 013.1-6.1zm-2.2 9A45.75 45.75 0 016.3 16c.1 0 .6.1 1.3.1a40.88 40.88 0 012.8-8.4 46.2 46.2 0 00-7.9-2A8.04 8.04 0 012.3 14.1zm14.4 4.7A8.03 8.03 0 0112 20c-1.1 0-2.2-.4-3.1-1.1a39.57 39.57 0 01-2-10.2c0-.3 0-.6.03-.9 3.1-1 6.9-1 11 3.2a7.95 7.95 0 01-3.3 12zm-1.9-1c.7-1.1 1-2.5 1.2-3.8a40.61 40.61 0 013.4 2.3 7.7 7.7 0 01-4.6 1.5zm3.7-3.6c-.8-.9-1.7-1.7-2.8-2.4a42.36 42.36 0 014.3-3.5 7.77 7.77 0 01-1.5 5.9z"/></svg>
       </a>
       <a href="https://pinterest.com/nirvaan" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" tabindex="0" title="Pinterest">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.4 2.9 8.1 7 9.4-.1-1.1-.1-2.7.1-3.9.1-.4.7-2.6.7-2.6s-.2-.4-.2-1c0-1 .6-1.7 1.3-1.7.6 0 .9.5.9 1.1 0 .7-.4 1.8-.6 2.7-.2.8.4 1.4 1.2 1.4 1.5 0 2.6-1.5 2.6-3.8 0-2-1.5-3.5-3.7-3.5-2.5 0-4 1.9-4 3.9 0 .7.3 1.5.7 2 .2.2.2.3.2.6-.1.2-.4.8-.5 1-.2.4-.7.5-1 .4-2.7-1.1-4.3-4.1-4.3-7 0-5.1 3.7-9.8 10.8-9.8 5.6 0 9.8 4 9.8 9.4 0 5.6-3.5 10.1-8.1 10.1-1.6 0-3.1-.8-3.6-1.8l-.9 3.5a.4.4 0 01-.6.3c-2.4-1-3.5-3.9-3.5-7a10.41 10.41 0 0110.6-10z"/></svg>
+        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.4 2.9 8.1 7 9.4-.1-1.1-.1-2.7.1-3.9.1-.4.7-2.6.7-2.6s-.2-.4-.2-1c0-1 .6-1.7 1.3-1.7.6 0 .9.5.9 1.1 0 .7-.4 1.8-.6 2.7-.2.8.4 1.4 1.2 1.4 1.5 0 2.6-1.5 2.6-3.8 0-2-1.5-3.5-3.7-3.5-2.5 0-4 1.9-4 3.9 0 .7.3 1.5.7 2 .2.2.2.3.2.6-.1.2-.4.8-.5 1-.2.4-.7.5-1 .4-2.7-1.1-4.3-4.1-4.3-7 0-5.1 3.7-9.8 10.8-9.8 5.6 0 9.8 4 9.8 9.4 0 5.6-3.5 10.1-8.1 10.1-1.6 0-3.1-.8-3.6-1.8l-.9 3.5a.4.4 0 01-.6.3c-2.4-1-3.5-3.9-3.5-7a10.41 10.41 0 0110.6-10z"/></svg>
       </a>
     </div>
     <div class="footer-trademark">© 2024 Indrajeet Pisda — Branding Expert &amp; Creative Designer</div>
   </div>
-  <div class="footer-center">
-    <label for="subscribe-email">Subscribe</label>
-    <form id="subscribe-form" aria-label="Subscribe to newsletter">
-      <input type="email" id="subscribe-email" name="email" required placeholder="Your email" aria-required="true" aria-label="Email address" />
-      <button type="submit">Subscribe</button>
-    </form>
-  </div>
-  <div class="footer-right" aria-label="Location">
-    Raipur
-  </div>
 </footer>
+
+<!-- Subscribe box -->
+<div id="subscribe-container" role="region" aria-label="Subscribe to newsletter and location info">
+  <h4>Subscribe to Newsletter</h4>
+  <p>Location: Vikash Vihaar, Raipur C.G.</p>
+  <form id="subscribe-form" aria-label="Subscribe form">
+    <input type="email" id="email" name="email" placeholder="Your email" required aria-required="true" aria-label="Email address" />
+    <button type="submit" aria-label="Subscribe">Subscribe</button>
+  </form>
+  <div id="subscribe-message" style="padding-top:0.5rem; font-size: 0.9rem;"></div>
+</div>
 
 <script>
   // Smooth scroll for nav links
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      const href = link.getAttribute('href').substring(1);
-      const target = document.getElementById(href);
-      if (target) {
-        target.scrollIntoView({behavior: 'smooth'});
-      }
+      let id = link.getAttribute('href').slice(1);
+      let section = document.getElementById(id);
+      if (section) section.scrollIntoView({behavior: 'smooth'});
     });
   });
 
-  // Carousel logic
-  function initCarousel(carouselContainer) {
-    const track = carouselContainer.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const prevBtn = carouselContainer.querySelector('.carousel-arrow.prev');
-    const nextBtn = carouselContainer.querySelector('.carousel-arrow.next');
+  // Generic Carousel init
+  function initCarousel(container) {
+    const track = container.querySelector('.carousel-track');
+    const slides = [...track.children];
+    const prevBtn = container.querySelector('.carousel-arrow.prev');
+    const nextBtn = container.querySelector('.carousel-arrow.next');
     let currentIndex = 0;
 
-    function updatePosition() {
-      const slideWidth = slides[0].getBoundingClientRect().width;
-      track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+    function update() {
+      const slideWidth = slides[0].clientWidth;
+      track.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
+      slides.forEach((slide, idx) => {
+        slide.setAttribute('aria-hidden', idx !== currentIndex);
+      });
     }
 
-    prevBtn.addEventListener('click', () => {
+    prevBtn.onclick = () => {
       currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      updatePosition();
-    });
-
-    nextBtn.addEventListener('click', () => {
+      update();
+    };
+    nextBtn.onclick = () => {
       currentIndex = (currentIndex + 1) % slides.length;
-      updatePosition();
-    });
+      update();
+    };
 
-    // Swipe support for mobile
-    let startX = 0;
-    let isDragging = false;
+    // Swipe support
+    let startX = null;
 
     track.addEventListener('touchstart', e => {
       startX = e.touches[0].clientX;
-      isDragging = true;
     });
     track.addEventListener('touchmove', e => {
-      if (!isDragging) return;
-      const currentX = e.touches[0].clientX;
-      const diff = startX - currentX;
+      if (startX === null) return;
+      let diff = startX - e.touches[0].clientX;
       if (diff > 50) { // swipe left
         nextBtn.click();
-        isDragging = false;
+        startX = null;
       } else if (diff < -50) { // swipe right
         prevBtn.click();
-        isDragging = false;
+        startX = null;
       }
     });
-    track.addEventListener('touchend', () => {
-      isDragging = false;
-    });
 
-    // Initialize position
-    updatePosition();
+    update();
   }
 
+  // Dropdown toggles for businesses
+  document.querySelectorAll('.dropdown-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      const contentId = button.getAttribute('aria-controls');
+      const content = document.getElementById(contentId);
+      const isOpen = content.classList.toggle('open');
+      button.setAttribute('aria-expanded', isOpen);
+      if (isOpen) {
+        content.removeAttribute('hidden');
+      } else {
+        content.setAttribute('hidden', '');
+      }
+      button.querySelector('.dropdown-arrow').classList.toggle('open', isOpen);
+    });
+  });
+
+  // Progress bar animation on load
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.carousel').forEach(carousel => {
-      initCarousel(carousel);
+    document.querySelectorAll('.progress-bar-fill').forEach(bar => {
+      const width = bar.style.width;
+      bar.style.width = '0%';
+      setTimeout(() => {
+        bar.style.width = width;
+      }, 100);
     });
 
-    // Simple subscribe form handler (no backend)
-    const subscribeForm = document.getElementById('subscribe-form');
-    subscribeForm.addEventListener('submit', e => {
+    // Initialize all carousels
+    document.querySelectorAll('.carousel').forEach(carousel => initCarousel(carousel));
+
+    // Subscribe form handling
+    const form = document.getElementById('subscribe-form');
+    const msg = document.getElementById('subscribe-message');
+    form.addEventListener('submit', e => {
       e.preventDefault();
-      const emailInput = subscribeForm.querySelector('input[type="email"]');
-      if (emailInput.value) {
-        alert(`Thank you for subscribing with ${emailInput.value}!`);
-        emailInput.value = '';
+      const email = form.email.value.trim();
+      if (!email) {
+        msg.textContent = 'Please enter a valid email address.';
+        return;
       }
+      // Simulate successful subscription
+      msg.style.color = '#a7cfc9';
+      msg.textContent = 'Thank you for subscribing!';
+      form.reset();
+      setTimeout(() => {
+        msg.textContent = '';
+      }, 4000);
     });
   });
 </script>
