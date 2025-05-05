@@ -4,6 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <title>Indrajeet Pisda - Portfolio</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Oswald&display=swap" rel="stylesheet" />
+
 <style>
   /* Reset and base */
   *, *::before, *::after {
@@ -11,18 +15,22 @@
   }
   body {
     margin: 0; padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    background: #fff;
-    color: #111;
-    line-height: 1.5;
+    font-family: 'Oswald', sans-serif;
+    background: #000000;
+    color: #ffffff;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
     overflow-x: hidden;
   }
   a {
     text-decoration: none;
-    color: inherit;
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #b0b0b0;
+    outline: none;
   }
   img {
     max-width: 100%;
@@ -39,8 +47,8 @@
   header {
     position: fixed;
     top: 0; left: 0; right: 0;
-    background: #fff;
-    box-shadow: 0 2px 10px rgb(0 0 0 / 0.05);
+    background: #121212;
+    box-shadow: 0 2px 14px rgba(255 255 255 / 0.1);
     z-index: 1000;
   }
   nav {
@@ -53,9 +61,10 @@
   }
   .logo {
     font-weight: 700;
-    font-size: 1.5rem;
-    color: #008060;
-    letter-spacing: 1px;
+    font-size: 1.8rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-family: 'Fjalla One', sans-serif;
     user-select: none;
   }
   .nav-links {
@@ -63,22 +72,40 @@
     gap: 1.5rem;
   }
   .nav-links a {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #111;
-    transition: color 0.3s ease;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    position: relative;
   }
   .nav-links a:hover,
   .nav-links a:focus {
-    color: #008060;
+    color: #b0b0b0;
   }
   /* Section Headers */
   h2.section-title {
-    font-weight: 900;
-    font-size: 2rem;
-    color: #00503c;
+    font-family: 'Fjalla One', sans-serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: #ffffff;
     margin-bottom: 2rem;
     text-align: center;
+  }
+  /* Small arrow next to percentage labels */
+  .percentage-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #ccc;
+    font-family: 'Oswald', sans-serif;
+  }
+  .percentage-label svg {
+    width: 8px;
+    height: 8px;
+    fill: #ccc;
+    user-select: none;
   }
   /* Hero Section */
   .hero {
@@ -91,40 +118,43 @@
     padding-top: 80px;
     padding-left: 1rem;
     padding-right: 1rem;
-    background: linear-gradient(135deg, #eaf8f1 0%, #ffffff 100%);
-    color: #043d3d;
+    background: #121212;
+    color: #ffffff;
     max-width: 900px;
     margin: 0 auto;
   }
   .hero h1 {
-    font-size: 2.75rem;
-    font-weight: 900;
+    font-size: 3rem;
+    font-weight: 700;
     max-width: 600px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     line-height: 1.1;
+    font-family: 'Fjalla One', sans-serif;
   }
   .hero p {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 400;
     max-width: 500px;
-    margin-bottom: 1.5rem;
-    color: #2e5754;
+    margin-bottom: 1.75rem;
+    color: #e0e0e0;
+    font-family: 'Oswald', sans-serif;
   }
   .hero button {
-    background-color: #008060;
-    color: white;
-    border: none;
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
     border-radius: 9999px;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
+    padding: 0.8rem 2.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    box-shadow: 0 6px 12px rgb(0 128 96 / 0.35);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Fjalla One', sans-serif;
+    box-shadow: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   .hero button:hover,
   .hero button:focus {
-    background-color: #006644;
-    box-shadow: 0 8px 16px rgb(0 102 68 / 0.45);
+    background-color: #ffffff;
+    color: #121212;
     outline: none;
   }
   section {
@@ -133,7 +163,7 @@
     padding: 0 1rem;
   }
 
-  /* Carousel base styles */
+  /* Carousel */
   .carousel {
     position: relative;
     overflow: hidden;
@@ -141,6 +171,7 @@
     margin-bottom: 2rem;
     max-width: 100%;
     max-height: 280px;
+    background: #1a1a1a;
   }
   .carousel-track {
     display: flex;
@@ -161,52 +192,51 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,128,96,0.8);
+    background: rgba(255 255 255, 0.15);
     border: none;
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    color: white;
-    font-size: 18px;
+    color: #ffffff;
+    font-size: 20px;
     cursor: pointer;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease;
+    user-select: none;
   }
   .carousel-arrow:hover,
   .carousel-arrow:focus {
-    background-color: #006644;
+    background-color: rgba(255 255 255, 0.35);
     outline: none;
   }
   .carousel-arrow.prev {
-    left: 12px;
+    left: 14px;
   }
   .carousel-arrow.next {
-    right: 12px;
+    right: 14px;
   }
-
   /* Profession & Skills Carousel */
   #profession-skills-carousel .carousel-slide {
-    padding: 1.5rem;
-    background: #f6fcfb;
-    color: #003d33;
+    padding: 2rem;
+    background: #222222;
+    color: #ffffff;
     font-weight: 700;
     font-size: 1.3rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #008060;
+    font-family: 'Oswald', sans-serif;
   }
   #profession-skills-carousel .carousel-slide p {
     max-width: 650px;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.05rem;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.5;
   }
-
   /* Tools & Platforms with percentage bars */
   #tools-platforms {
     max-width: 500px;
@@ -217,36 +247,50 @@
   }
   .tool-bar {
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .tool-label {
     font-weight: 700;
-    margin-bottom: 0.3rem;
-    color: #004632;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
   .progress-bar-bg {
-    width: 100%;
+    flex-grow: 1;
     height: 18px;
-    background: #e6f0ec;
+    background: #333333;
     border-radius: 9px;
     overflow: hidden;
+    margin-left: 10px;
+    position: relative;
   }
   .progress-bar-fill {
     height: 100%;
-    background-color: #008060;
+    background-color: #dddddd;
     border-radius: 9px 0 0 9px;
     width: 0;
     transition: width 1s ease-out;
   }
-
+  /* Tiny light arrow for labels */
+  .tool-label svg {
+    width: 10px;
+    height: 10px;
+    fill: #ccc;
+  }
   /* Businesses Section */
   .business-item {
     margin-bottom: 3rem;
   }
   .business-item h3 {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: #004832;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
     margin-bottom: 0.5rem;
+    font-family: 'Fjalla One', sans-serif;
   }
   .business-carousel {
     position: relative;
@@ -255,6 +299,7 @@
     max-width: 100%;
     height: 280px;
     margin-bottom: 0.5rem;
+    background: #222222;
   }
   .business-carousel .carousel-track {
     height: 280px;
@@ -267,66 +312,62 @@
   }
   .dropdown-toggle {
     font-weight: 700;
-    background: #f0faf7;
-    border: 2px solid #008060;
+    background: transparent;
+    border: 2px solid #ffffff;
     border-radius: 6px;
-    padding: 0.45rem 1rem;
+    padding: 0.5rem 1rem;
     cursor: pointer;
     user-select: none;
-    color: #00583d;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    color: #ffffff;
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   .dropdown-toggle:hover,
   .dropdown-toggle:focus {
-    background: #daf3e6;
+    background: #ffffff;
+    color: #121212;
     outline: none;
   }
   .dropdown-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease;
-    background: #e6f4f1;
+    background: #121212;
     border-radius: 0 0 8px 8px;
     padding: 0 1rem;
-    color: #003927;
+    color: #cccccc;
     font-size: 0.95rem;
   }
   .dropdown-content.open {
-    max-height: 1000px; /* sufficiently large for content */
+    max-height: 1000px;
     padding-top: 0.5rem;
     padding-bottom: 1rem;
   }
-  .dropdown-arrow {
-    display: inline-block;
-    transition: transform 0.3s ease;
-  }
-  .dropdown-arrow.open {
-    transform: rotate(180deg);
-  }
-
   /* Subscribe Section bottom right */
   #subscribe-container {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #008060;
-    color: white;
+    background: #121212;
+    color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 10px 20px rgb(0 128 96 / 0.5);
+    box-shadow: 0 10px 20px rgba(255 255 255, 0.2);
     padding: 1rem 1.5rem;
     max-width: 320px;
     z-index: 1100;
+    font-family: 'Oswald', sans-serif;
   }
   #subscribe-container h4 {
     margin: 0 0 0.5rem 0;
     font-weight: 700;
+    color: #ffffff;
   }
   #subscribe-container p {
     margin: 0 0 0.8rem 0;
     font-size: 0.9rem;
-    color: #d1f1dd;
+    color: #cccccc;
   }
   #subscribe-form {
     display: flex;
@@ -334,35 +375,45 @@
   }
   #subscribe-form input[type="email"] {
     flex-grow: 1;
-    border: none;
+    border: 2px solid #ffffff;
     border-radius: 6px;
     padding: 0.5rem 1rem;
     font-size: 1rem;
+    color: #121212;
     outline-offset: 2px;
   }
+  #subscribe-form input[type="email"]::placeholder {
+    color: #999999;
+  }
   #subscribe-form input[type="email"]:focus {
-    outline: 2px solid #004d33;
+    outline: 2px solid #cccccc;
+    outline-offset: 0;
   }
   #subscribe-form button {
-    background: #004d33;
-    color: white;
-    border: none;
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
     font-weight: 700;
     padding: 0 1rem;
     border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   #subscribe-form button:hover,
   #subscribe-form button:focus {
-    background: #003322;
+    background: #ffffff;
+    color: #121212;
     outline: none;
   }
-
+  #subscribe-message {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: #bbb;
+  }
   /* Footer */
   footer {
-    background: #043d3d;
-    color: #a7cfc9;
+    background: #121212;
+    color: #ffffff;
     padding: 1rem 1rem 2rem;
     display: flex;
     align-items: flex-start;
@@ -373,6 +424,7 @@
     user-select: none;
     flex-wrap: wrap;
     column-gap: 2rem;
+    font-family: 'Oswald', sans-serif;
   }
   .footer-left {
     display: flex;
@@ -388,12 +440,12 @@
     display: inline-flex;
     width: 28px;
     height: 28px;
-    color: #a7cfc9;
+    color: #ffffff;
     transition: color 0.3s ease;
   }
   .footer-social a:hover,
   .footer-social a:focus {
-    color: #fff;
+    color: #b0b0b0;
     outline: none;
   }
   .footer-social svg {
@@ -403,19 +455,55 @@
   }
   .footer-trademark {
     font-size: 0.85rem;
-    color: #88b4a9;
+    color: #b0b0b0;
+    font-family: 'Fjalla One', sans-serif;
   }
-
-  /* Responsive */
+  /* Scroll to top button */
+  #scrollToTopBtn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1200;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  #scrollToTopBtn:hover,
+  #scrollToTopBtn:focus {
+    background-color: #ffffff;
+    border-color: #b0b0b0;
+    outline: none;
+  }
+  #scrollToTopBtn svg {
+    width: 18px;
+    height: 18px;
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    transition: stroke 0.3s ease;
+  }
+  #scrollToTopBtn:hover svg,
+  #scrollToTopBtn:focus svg {
+    stroke: #000000;
+  }
   @media (max-width: 600px) {
     body {
       font-size: 14px;
     }
     .hero h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
     .hero p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       max-width: 100%;
     }
     nav {
@@ -500,31 +588,31 @@
 <section id="tools-platforms" aria-label="Tools and Platforms skill percentage">
   <h2 class="section-title">Tools & Platforms</h2>
   <div class="tool-bar">
-    <div class="tool-label">Adobe After Effects (AE)</div>
+    <div class="tool-label">Adobe After Effects (AE) <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 7 L5 3 L9 7" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"/></svg></div>
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" style="width: 90%;"></div>
     </div>
   </div>
   <div class="tool-bar">
-    <div class="tool-label">Adobe Photoshop (AP)</div>
+    <div class="tool-label">Adobe Photoshop (AP) <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 7 L5 3 L9 7" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"/></svg></div>
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" style="width: 85%;"></div>
     </div>
   </div>
   <div class="tool-bar">
-    <div class="tool-label">Canva</div>
+    <div class="tool-label">Canva <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 7 L5 3 L9 7" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"/></svg></div>
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" style="width: 80%;"></div>
     </div>
   </div>
   <div class="tool-bar">
-    <div class="tool-label">Figma</div>
+    <div class="tool-label">Figma <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 7 L5 3 L9 7" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"/></svg></div>
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" style="width: 75%;"></div>
     </div>
   </div>
   <div class="tool-bar">
-    <div class="tool-label">Prompt Engineering</div>
+    <div class="tool-label">Prompt Engineering <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 7 L5 3 L9 7" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"/></svg></div>
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" style="width: 70%;"></div>
     </div>
@@ -552,7 +640,6 @@
     <div class="business-dropdown">
       <button class="dropdown-toggle" aria-expanded="false" aria-controls="nirvaan-details">
         Details
-        <span class="dropdown-arrow">&#9660;</span>
       </button>
       <div class="dropdown-content" id="nirvaan-details" hidden>
         <p><strong>Type:</strong> Printed T-shirt & Fashion Brand</p>
@@ -581,7 +668,6 @@
     <div class="business-dropdown">
       <button class="dropdown-toggle" aria-expanded="false" aria-controls="urbanstore-details">
         Details
-        <span class="dropdown-arrow">&#9660;</span>
       </button>
       <div class="dropdown-content" id="urbanstore-details" hidden>
         <p><strong>Tagline:</strong> "All Products, All Possibilities"</p>
@@ -596,10 +682,10 @@
       <button class="carousel-arrow prev" aria-label="Previous Aayu Water Solution image">&#10094;</button>
       <div class="carousel-track">
         <div class="carousel-slide">
-          <img src="https://images.pexels.com/photos/328407/pexels-photo-328407.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Water flowing from faucet" />
+          <img src="https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Water purification system" />
         </div>
         <div class="carousel-slide">
-          <img src="https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Water purification system" />
+          <img src="https://images.pexels.com/photos/853199/pexels-photo-853199.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Modern water system pipes" />
         </div>
       </div>
       <button class="carousel-arrow next" aria-label="Next Aayu Water Solution image">&#10095;</button>
@@ -607,7 +693,6 @@
     <div class="business-dropdown">
       <button class="dropdown-toggle" aria-expanded="false" aria-controls="aayu-details">
         Details
-        <span class="dropdown-arrow">&#9660;</span>
       </button>
       <div class="dropdown-content" id="aayu-details" hidden>
         <p><strong>Type:</strong> Water Solution Business</p>
@@ -635,7 +720,6 @@
     <div class="business-dropdown">
       <button class="dropdown-toggle" aria-expanded="false" aria-controls="digitaltrade-details">
         Details
-        <span class="dropdown-arrow">&#9660;</span>
       </button>
       <div class="dropdown-content" id="digitaltrade-details" hidden>
         <p><strong>Type:</strong> Platform for digital creators</p>
@@ -679,114 +763,136 @@
     <input type="email" id="email" name="email" placeholder="Your email" required aria-required="true" aria-label="Email address" />
     <button type="submit" aria-label="Subscribe">Subscribe</button>
   </form>
-  <div id="subscribe-message" style="padding-top:0.5rem; font-size: 0.9rem;"></div>
+  <div id="subscribe-message" style="padding-top:0.5rem;"></div>
 </div>
 
+<!-- Scroll to Top button -->
+<button id="scrollToTopBtn" aria-label="Scroll to top" title="Scroll to top" aria-live="polite">
+  <svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false" width="16" height="16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" style="transform: rotate(0deg);">
+    <polyline points="6 15 12 9 18 15"></polyline>
+  </svg>
+</button>
+
 <script>
-  // Smooth scroll for nav links
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      let id = link.getAttribute('href').slice(1);
-      let section = document.getElementById(id);
-      if (section) section.scrollIntoView({behavior: 'smooth'});
-    });
+// Smooth scroll nav links
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    let id = link.getAttribute('href').slice(1);
+    let section = document.getElementById(id);
+    if (section) section.scrollIntoView({behavior: 'smooth'});
   });
+});
 
-  // Generic Carousel init
-  function initCarousel(container) {
-    const track = container.querySelector('.carousel-track');
-    const slides = [...track.children];
-    const prevBtn = container.querySelector('.carousel-arrow.prev');
-    const nextBtn = container.querySelector('.carousel-arrow.next');
-    let currentIndex = 0;
+// Generic carousel init
+function initCarousel(container) {
+  const track = container.querySelector('.carousel-track');
+  const slides = [...track.children];
+  const prevBtn = container.querySelector('.carousel-arrow.prev');
+  const nextBtn = container.querySelector('.carousel-arrow.next');
+  let currentIndex = 0;
 
-    function update() {
-      const slideWidth = slides[0].clientWidth;
-      track.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
-      slides.forEach((slide, idx) => {
-        slide.setAttribute('aria-hidden', idx !== currentIndex);
-      });
-    }
-
-    prevBtn.onclick = () => {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      update();
-    };
-    nextBtn.onclick = () => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      update();
-    };
-
-    // Swipe support
-    let startX = null;
-
-    track.addEventListener('touchstart', e => {
-      startX = e.touches[0].clientX;
+  function update() {
+    const slideWidth = slides[0].clientWidth;
+    track.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
+    slides.forEach((slide, idx) => {
+      slide.setAttribute('aria-hidden', idx !== currentIndex);
     });
-    track.addEventListener('touchmove', e => {
-      if (startX === null) return;
-      let diff = startX - e.touches[0].clientX;
-      if (diff > 50) { // swipe left
-        nextBtn.click();
-        startX = null;
-      } else if (diff < -50) { // swipe right
-        prevBtn.click();
-        startX = null;
-      }
-    });
-
-    update();
   }
 
-  // Dropdown toggles for businesses
-  document.querySelectorAll('.dropdown-toggle').forEach(button => {
-    button.addEventListener('click', () => {
-      const contentId = button.getAttribute('aria-controls');
-      const content = document.getElementById(contentId);
-      const isOpen = content.classList.toggle('open');
-      button.setAttribute('aria-expanded', isOpen);
-      if (isOpen) {
-        content.removeAttribute('hidden');
-      } else {
-        content.setAttribute('hidden', '');
-      }
-      button.querySelector('.dropdown-arrow').classList.toggle('open', isOpen);
-    });
+  prevBtn.onclick = () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    update();
+  };
+  nextBtn.onclick = () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    update();
+  };
+
+  // Swipe support
+  let startX = null;
+
+  track.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+  track.addEventListener('touchmove', e => {
+    if (startX === null) return;
+    let diff = startX - e.touches[0].clientX;
+    if (diff > 50) { // swipe left
+      nextBtn.click();
+      startX = null;
+    } else if (diff < -50) { // swipe right
+      prevBtn.click();
+      startX = null;
+    }
   });
 
-  // Progress bar animation on load
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.progress-bar-fill').forEach(bar => {
-      const width = bar.style.width;
-      bar.style.width = '0%';
-      setTimeout(() => {
-        bar.style.width = width;
-      }, 100);
-    });
+  update();
+}
 
-    // Initialize all carousels
-    document.querySelectorAll('.carousel').forEach(carousel => initCarousel(carousel));
-
-    // Subscribe form handling
-    const form = document.getElementById('subscribe-form');
-    const msg = document.getElementById('subscribe-message');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const email = form.email.value.trim();
-      if (!email) {
-        msg.textContent = 'Please enter a valid email address.';
-        return;
-      }
-      // Simulate successful subscription
-      msg.style.color = '#a7cfc9';
-      msg.textContent = 'Thank you for subscribing!';
-      form.reset();
-      setTimeout(() => {
-        msg.textContent = '';
-      }, 4000);
-    });
+// Dropdown toggle
+document.querySelectorAll('.dropdown-toggle').forEach(button => {
+  button.addEventListener('click', () => {
+    const contentId = button.getAttribute('aria-controls');
+    const content = document.getElementById(contentId);
+    const isOpen = content.classList.toggle('open');
+    button.setAttribute('aria-expanded', isOpen);
+    if (isOpen) {
+      content.removeAttribute('hidden');
+    } else {
+      content.setAttribute('hidden', '');
+    }
   });
+});
+
+// Progress bar animation and carousels init
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.progress-bar-fill').forEach(bar => {
+    const width = bar.style.width;
+    bar.style.width = '0%';
+    setTimeout(() => {
+      bar.style.width = width;
+    }, 150);
+  });
+
+  document.querySelectorAll('.carousel').forEach(carousel => initCarousel(carousel));
+
+  // Subscribe form
+  const form = document.getElementById('subscribe-form');
+  const msg = document.getElementById('subscribe-message');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = form.email.value.trim();
+    if (!email) {
+      msg.textContent = 'Please enter a valid email address.';
+      msg.style.color = '#ef5350';
+      return;
+    }
+    msg.style.color = '#ffffff';
+    msg.textContent = 'Thank you for subscribing!';
+    form.reset();
+    setTimeout(() => {
+      msg.textContent = '';
+    }, 4500);
+  });
+
+  // Scroll to Top button show/hide & effect
+  const scrollBtn = document.getElementById('scrollToTopBtn');
+  function updateScrollBtn() {
+    const scrollTop = window.scrollY;
+    if(scrollTop > 100) {
+      scrollBtn.style.display = 'flex';
+    }
+    else {
+      scrollBtn.style.display = 'none';
+    }
+  }
+  updateScrollBtn();
+  window.addEventListener('scroll', updateScrollBtn);
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
 </script>
 
 </body>
