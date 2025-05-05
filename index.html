@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Indrajeet Pisda - Portfolio</title>
+<style>
+  /* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #fff;
+    color: #111;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  button {
+    cursor: pointer;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Header and Navigation */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #fff;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.05);
+    z-index: 1000;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #008060; /* Shopify green */
+    letter-spacing: 1px;
+    user-select: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+  .nav-links a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #111;
+    transition: color 0.3s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus {
+    color: #008060;
+  }
+
+  /* Hero Section */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 90vh;
+    max-height: 600px;
+    padding-top: 80px; /* height of header */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: linear-gradient(135deg, #eaf8f1 0%, #ffffff 100%);
+    color: #043d3d;
+  }
+  .hero h1 {
+    font-size: 2.75rem;
+    font-weight: 900;
+    max-width: 600px;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    font-weight: 400;
+    max-width: 450px;
+    margin-bottom: 1.5rem;
+    color: #2e5754;
+  }
+  .hero button {
+    background-color: #008060;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 6px 12px rgb(0 128 96 / 0.35);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hero button:hover,
+  .hero button:focus {
+    background-color: #006644;
+    box-shadow: 0 8px 16px rgb(0 102 68 / 0.45);
+    outline: none;
+  }
+
+  /* Portfolio Section */
+  .portfolio {
+    padding: 3rem 1rem 5rem;
+    background: #fff;
+  }
+  .portfolio h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: #00503c;
+    text-align: center;
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 2rem;
+  }
+  .project-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgb(0 0 0 / 0.1);
+    background: #fefefe;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .project-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .project-info {
+    padding: 1rem 1.25rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: #004632;
+  }
+  .project-desc {
+    flex-grow: 1;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.3;
+  }
+  .project-link {
+    margin-top: 1rem;
+    color: #008060;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    align-self: flex-start;
+  }
+  .project-link:hover,
+  .project-link:focus {
+    color: #006644;
+  }
+
+  /* Footer */
+  footer {
+    background: #043d3d;
+    color: #a7cfc9;
+    padding: 2rem 1rem 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    user-select: none;
+  }
+  footer a {
+    color: #7ed7c7;
+    font-weight: 600;
+    margin: 0 0.5rem;
+    display: inline-block;
+    transition: color 0.3s ease;
+  }
+  footer a:hover,
+  footer a:focus {
+    color: #bbeadc;
+    outline: none;
+  }
+
+  /* Responsive adjustments for small mobile */
+  @media (max-width: 400px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+    .hero p {
+      font-size: 1rem;
+      max-width: 100%;
+    }
+    .project-card {
+      transform: translateY(0);
+      opacity: 1 !important; /* disable animation on tiny screens for UX */
+    }
+    footer {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <div class="logo" tabindex="0" aria-label="Home">Indrajeet Pisda</div>
+    <div class="nav-links" role="navigation" aria-label="Primary navigation">
+      <a href="#portfolio">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" role="banner">
+  <h1>Crafting Clean & Elegant Digital Experiences</h1>
+  <p>I'm a passionate web developer creating stunning, performant websites and apps.</p>
+  <button onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})" aria-label="See my projects">View Projects</button>
+</section>
+
+<section id="portfolio" class="portfolio" aria-label="Portfolio Projects">
+  <h2>Selected Projects</h2>
+  <div class="portfolio-grid">
+    <article class="project-card" tabindex="0">
+      <img class="project-image" src="https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Dashboard web app preview" />
+      <div class="project-info">
+        <h3 class="project-title">Dashboard Web App</h3>
+        <p class="project-desc">A sleek dashboard interface with data visualizations and responsive layouts, built with React and Chart.js.</p>
+        <a href="#" class="project-link" aria-label="View Dashboard Web App details">Learn More →</a>
+      </div>
+    </article>
+    <article class="project-card" tabindex="0">
+      <img class="project-image" src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="E-commerce product page preview" />
+      <div class="project-info">
+        <h3 class="project-title">E-commerce Storefront</h3>
+        <p class="project-desc">Modern e-commerce website with smooth animations, cart functionality, and mobile-optimized UI.</p>
+        <a href="#" class="project-link" aria-label="View E-commerce Storefront details">Learn More →</a>
+      </div>
+    </article>
+    <article class="project-card" tabindex="0">
+      <img class="project-image" src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Portfolio website preview" />
+      <div class="project-info">
+        <h3 class="project-title">Personal Portfolio</h3>
+        <p class="project-desc">A clean and minimal portfolio website showcasing projects, skills, and contact information.</p>
+        <a href="#" class="project-link" aria-label="View Personal Portfolio details">Learn More →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer id="contact" role="contentinfo" aria-label="Contact information">
+  Web Developer
+</footer>
+
+<script>
+  // IntersectionObserver to animate portfolio cards on scroll into view
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll('.project-card');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      cards.forEach(card => observer.observe(card));
+    } else {
+      // Fallback, show all if no IntersectionObserver
+      cards.forEach(card => card.classList.add('visible'));
+    }
+  });
+</script>
+</body>
+</html>
+
