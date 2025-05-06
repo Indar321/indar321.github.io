@@ -1,899 +1,550 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>Indrajeet Pisda - Portfolio</title>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Oswald&display=swap" rel="stylesheet" />
-
-<style>
-  /* Reset and base */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0; padding: 0;
-    font-family: 'Oswald', sans-serif;
-    background: #000000;
-    color: #ffffff;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  a {
-    text-decoration: none;
-    color: #ffffff;
-    transition: color 0.3s ease;
-  }
-  a:hover, a:focus {
-    color: #b0b0b0;
-    outline: none;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 12px;
-    user-select: none;
-    pointer-events: none;
-  }
-  button, input[type="email"] {
-    font-family: inherit;
-  }
-  /* Header and Navigation */
-  header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: #121212;
-    box-shadow: 0 2px 14px rgba(255 255 255 / 0.1);
-    z-index: 1000;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1rem;
-    max-width: 1140px;
-    margin: 0 auto;
-  }
-  .logo {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #ffffff;
-    letter-spacing: 2px;
-    font-family: 'Fjalla One', sans-serif;
-    user-select: none;
-  }
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-  }
-  .nav-links a {
-    font-weight: 700;
-    font-size: 1rem;
-    color: #ffffff;
-    font-family: 'Oswald', sans-serif;
-    position: relative;
-  }
-  .nav-links a:hover,
-  .nav-links a:focus {
-    color: #b0b0b0;
-  }
-  /* Section Headers */
-  h2.section-title {
-    font-family: 'Fjalla One', sans-serif;
-    font-weight: 700;
-    font-size: 2.4rem;
-    color: #ffffff;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  /* Small arrow next to percentage labels */
-  .percentage-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #ccc;
-    font-family: 'Oswald', sans-serif;
-  }
-  .percentage-label svg {
-    width: 8px;
-    height: 8px;
-    fill: #ccc;
-    user-select: none;
-  }
-  /* Hero Section */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 90vh;
-    max-height: 600px;
-    padding-top: 80px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    background: #121212;
-    color: #ffffff;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .hero h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    max-width: 600px;
-    margin-bottom: 0.75rem;
-    line-height: 1.1;
-    font-family: 'Fjalla One', sans-serif;
-  }
-  .hero p {
-    font-size: 1.25rem;
-    font-weight: 400;
-    max-width: 500px;
-    margin-bottom: 1.75rem;
-    color: #e0e0e0;
-    font-family: 'Oswald', sans-serif;
-  }
-  .hero button {
-    background: transparent;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-    border-radius: 9999px;
-    padding: 0.8rem 2.2rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    font-family: 'Fjalla One', sans-serif;
-    box-shadow: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  .hero button:hover,
-  .hero button:focus {
-    background-color: #ffffff;
-    color: #121212;
-    outline: none;
-  }
-  section {
-    max-width: 1140px;
-    margin: 3rem auto 5rem auto;
-    padding: 0 1rem;
-  }
-
-  /* Carousel */
-  .carousel {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    max-width: 100%;
-    max-height: 280px;
-    background: #1a1a1a;
-  }
-  .carousel-track {
-    display: flex;
-    transition: transform 0.5s ease;
-  }
-  .carousel-slide {
-    min-width: 100%;
-    user-select: none;
-    position: relative;
-  }
-  .carousel-slide img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    pointer-events: none;
-  }
-  .carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255 255 255, 0.15);
-    border: none;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    color: #ffffff;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-    user-select: none;
-  }
-  .carousel-arrow:hover,
-  .carousel-arrow:focus {
-    background-color: rgba(255 255 255, 0.35);
-    outline: none;
-  }
-  .carousel-arrow.prev {
-    left: 14px;
-  }
-  .carousel-arrow.next {
-    right: 14px;
-  }
-  /* Profession & Skills Carousel */
-  #profession-skills-carousel .carousel-slide {
-    padding: 2rem;
-    background: #222222;
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Oswald', sans-serif;
-  }
-  #profession-skills-carousel .carousel-slide p {
-    max-width: 650px;
-    font-weight: 400;
-    font-size: 1.05rem;
-    margin: 0;
-    line-height: 1.5;
-  }
-  /* Tools & Platforms with percentage bars */
-  #tools-platforms {
-    max-width: 500px;
-    margin: 0 auto 3rem;
-  }
-  #tools-platforms h2 {
-    margin-bottom: 1rem;
-  }
-  .tool-bar {
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .tool-label {
-    font-weight: 700;
-    color: #ffffff;
-    font-family: 'Oswald', sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .progress-bar-bg {
-    flex-grow: 1;
-    height: 18px;
-    background: #333333;
-    border-radius: 9px;
-    overflow: hidden;
-    margin-left: 10px;
-    position: relative;
-  }
-  .progress-bar-fill {
-    height: 100%;
-    background-color: #dddddd;
-    border-radius: 9px 0 0 9px;
-    width: 0;
-    transition: width 1s ease-out;
-  }
-  /* Tiny light arrow for labels */
-  .tool-label svg {
-    width: 10px;
-    height: 10px;
-    fill: #ccc;
-  }
-  /* Businesses Section */
-  .business-item {
-    margin-bottom: 3rem;
-  }
-  .business-item h3 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 0.5rem;
-    font-family: 'Fjalla One', sans-serif;
-  }
-  .business-carousel {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    max-width: 100%;
-    height: 280px;
-    margin-bottom: 0.5rem;
-    background: #222222;
-  }
-  .business-carousel .carousel-track {
-    height: 280px;
-  }
-  .business-carousel .carousel-slide img {
-    height: 280px;
-  }
-  .business-dropdown {
-    margin-top: 0.4rem;
-  }
-  .dropdown-toggle {
-    font-weight: 700;
-    background: transparent;
-    border: 2px solid #ffffff;
-    border-radius: 6px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    user-select: none;
-    color: #ffffff;
-    display: inline-block;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  .dropdown-toggle:hover,
-  .dropdown-toggle:focus {
-    background: #ffffff;
-    color: #121212;
-    outline: none;
-  }
-  .dropdown-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease;
-    background: #121212;
-    border-radius: 0 0 8px 8px;
-    padding: 0 1rem;
-    color: #cccccc;
-    font-size: 0.95rem;
-  }
-  .dropdown-content.open {
-    max-height: 1000px;
-    padding-top: 0.5rem;
-    padding-bottom: 1rem;
-  }
-  /* Subscribe Section bottom right */
-  #subscribe-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #121212;
-    color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(255 255 255, 0.2);
-    padding: 1rem 1.5rem;
-    max-width: 320px;
-    z-index: 1100;
-    font-family: 'Oswald', sans-serif;
-  }
-  #subscribe-container h4 {
-    margin: 0 0 0.5rem 0;
-    font-weight: 700;
-    color: #ffffff;
-  }
-  #subscribe-container p {
-    margin: 0 0 0.8rem 0;
-    font-size: 0.9rem;
-    color: #cccccc;
-  }
-  #subscribe-form {
-    display: flex;
-    gap: 0.5rem;
-  }
-  #subscribe-form input[type="email"] {
-    flex-grow: 1;
-    border: 2px solid #ffffff;
-    border-radius: 6px;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    color: #121212;
-    outline-offset: 2px;
-  }
-  #subscribe-form input[type="email"]::placeholder {
-    color: #999999;
-  }
-  #subscribe-form input[type="email"]:focus {
-    outline: 2px solid #cccccc;
-    outline-offset: 0;
-  }
-  #subscribe-form button {
-    background: transparent;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-    font-weight: 700;
-    padding: 0 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  #subscribe-form button:hover,
-  #subscribe-form button:focus {
-    background: #ffffff;
-    color: #121212;
-    outline: none;
-  }
-  #subscribe-message {
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-    color: #bbb;
-  }
-  /* Footer */
-  footer {
-    background: #121212;
-    color: #ffffff;
-    padding: 1rem 1rem 2rem;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    max-width: 1140px;
-    margin: 0 auto;
-    font-size: 0.9rem;
-    user-select: none;
-    flex-wrap: wrap;
-    column-gap: 2rem;
-    font-family: 'Oswald', sans-serif;
-  }
-  .footer-left {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    align-items: flex-start;
-  }
-  .footer-social {
-    display: flex;
-    gap: 1rem;
-  }
-  .footer-social a {
-    display: inline-flex;
-    width: 28px;
-    height: 28px;
-    color: #ffffff;
-    transition: color 0.3s ease;
-  }
-  .footer-social a:hover,
-  .footer-social a:focus {
-    color: #b0b0b0;
-    outline: none;
-  }
-  .footer-social svg {
-    width: 28px;
-    height: 28px;
-    fill: currentColor;
-  }
-  .footer-trademark {
-    font-size: 0.85rem;
-    color: #b0b0b0;
-    font-family: 'Fjalla One', sans-serif;
-  }
-  /* Scroll to top button */
-  #scrollToTopBtn {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: transparent;
-    border: 2px solid #ffffff;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 1200;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  #scrollToTopBtn:hover,
-  #scrollToTopBtn:focus {
-    background-color: #ffffff;
-    border-color: #b0b0b0;
-    outline: none;
-  }
-  #scrollToTopBtn svg {
-    width: 18px;
-    height: 18px;
-    stroke: #ffffff;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-    transition: stroke 0.3s ease;
-  }
-  #scrollToTopBtn:hover svg,
-  #scrollToTopBtn:focus svg {
-    stroke: #000000;
-  }
-  @media (max-width: 600px) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Portfolio - Indrajeet Pisda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
     body {
-      font-size: 14px;
+      font-family: "Roboto", sans-serif;
+      background-color: #fff;
+      color: #222;
     }
-    .hero h1 {
-      font-size: 2rem;
+    .font-mono {
+      font-family: "Roboto Mono", monospace;
     }
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 100%;
+    a {
+      color: #1a1a1a;
+      text-decoration: none;
     }
-    nav {
-      flex-wrap: wrap;
-      gap: 0.8rem;
+    a:hover {
+      text-decoration: underline;
     }
-    .nav-links {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      width: 100%;
-      order: 2;
+    /* Carousel styles */
+    .carousel {
+      scroll-snap-type: x mandatory;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
     }
-    .logo {
-      flex-grow: 1;
-      text-align: center;
-      order: 1;
+    .carousel::-webkit-scrollbar {
+      display: none;
     }
-    section {
-      margin: 2rem 1rem 4rem;
-      padding: 0;
+    .carousel-item {
+      scroll-snap-align: start;
+      flex: 0 0 25%;
+      max-width: 25%;
+      box-sizing: border-box;
+      padding: 0 0.5rem;
     }
-    #subscribe-container {
-      max-width: 90vw;
-      bottom: 15px;
-      right: 7vw;
-      padding: 0.8rem 1rem;
+    @media (max-width: 1024px) {
+      .carousel-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
     }
-    footer {
-      flex-direction: column;
-      gap: 0.8rem;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      padding-bottom: 3rem;
+    @media (max-width: 640px) {
+      .carousel-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
     }
-    .footer-left {
-      align-items: center;
-      gap: 0.5rem;
+    /* Animation loop for professions */
+    .profession-loop {
+      font-family: "Roboto", sans-serif;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: white;
+      height: 56px; /* approx line height */
+      overflow: hidden;
+      position: relative;
+      width: max-content;
     }
-  }
-</style>
+    .profession-loop span {
+      position: absolute;
+      opacity: 0;
+      animation: fadeInOut 9s linear infinite;
+      white-space: nowrap;
+    }
+    .profession-loop span:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .profession-loop span:nth-child(2) {
+      animation-delay: 3s;
+    }
+    .profession-loop span:nth-child(3) {
+      animation-delay: 6s;
+    }
+    @keyframes fadeInOut {
+      0%,
+      33.33% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      44.44%,
+      100% {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+    }
+  </style>
 </head>
-<body>
-
-<header>
-  <nav>
-    <div class="logo" tabindex="0" aria-label="Home">Indrajeet Pisda</div>
-    <div class="nav-links" role="navigation" aria-label="Primary navigation">
-      <a href="#profession-skills" tabindex="0">Profession</a>
-      <a href="#tools-platforms" tabindex="0">Tools & Platforms</a>
-      <a href="#businesses" tabindex="0">Businesses</a>
+<body class="bg-white text-gray-900">
+  <!-- Top bar -->
+  <div
+    class="bg-[#1a1a1a] text-white text-[10px] font-mono tracking-widest uppercase text-center py-1"
+  >
+    Graphic Designer | Animator | Web Developer
+  </div>
+  <!-- Navigation -->
+  <nav
+    class="bg-[#1a1a1a] text-white text-[13px] font-mono tracking-widest uppercase flex flex-wrap items-center justify-between px-4 sm:px-6 md:px-10 py-3"
+  >
+    <div class="font-bold text-[13px] cursor-pointer select-none">INDRAJEET PISDA</div>
+    <div class="flex space-x-6 text-[13px]">
+      <a class="cursor-pointer select-none" href="#about">ABOUT</a>
+      <a class="cursor-pointer select-none" href="#projects">PROJECTS</a>
+      <a class="cursor-pointer select-none" href="#skills">SKILLS</a>
+      <a class="cursor-pointer select-none" href="#contact">CONTACT</a>
     </div>
   </nav>
-</header>
-
-<section class="hero" role="banner" aria-label="Introduction">
-  <h1>Welcome to my Portfolio</h1>
-  <p>Branding Expert, Creative Designer, and Graphic Designer passionate about crafting distinctive and authentic visual identities.</p>
-  <button onclick="document.getElementById('profession-skills').scrollIntoView({behavior: 'smooth'})" aria-label="Learn more about profession and skills">Learn More About Me</button>
-</section>
-
-<section id="profession-skills" aria-label="Profession and Skills with carousel">
-  <h2 class="section-title">Profession & Skills</h2>
-  <div class="carousel" aria-roledescription="carousel" aria-label="Profession and individual skills carousel" id="profession-skills-carousel">
-    <button class="carousel-arrow prev" aria-label="Previous profession/skill">&#10094;</button>
-    <div class="carousel-track" tabindex="0">
-      <div class="carousel-slide" aria-hidden="false" role="group" aria-roledescription="slide" aria-label="Branding Expert">
-        <p><strong>Branding Expert</strong>: Creating cohesive brand identities that tell a compelling story and connect deeply with audiences.</p>
+  <!-- Hero Section with futuristic banner -->
+  <section class="relative">
+    <img
+      alt="Futuristic digital art with neon lights and abstract shapes"
+      class="w-full h-auto object-cover"
+      height="700"
+      src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1440&q=80"
+      width="1440"
+    />
+    <div
+      class="absolute top-16 left-6 max-w-xs sm:max-w-sm md:max-w-md font-sans"
+      style="line-height: 1.1"
+    >
+      <h1
+        class="text-[48px] font-extralight tracking-tight"
+        style="line-height: 1.1; color: white;"
+      >
+        INDRAJEET
+        <br />
+        PISDA
+      </h1>
+      <div class="profession-loop mt-1">
+        <span>Graphic Designer</span>
+        <span>Animator</span>
+        <span>Web Developer</span>
       </div>
-      <div class="carousel-slide" aria-hidden="true" role="group" aria-roledescription="slide" aria-label="Creative Designer">
-        <p><strong>Creative Designer</strong>: Designing unique, innovative visuals across digital platforms for maximum impact and clarity.</p>
-      </div>
-      <div class="carousel-slide" aria-hidden="true" role="group" aria-roledescription="slide" aria-label="Graphic Designer">
-        <p><strong>Graphic Designer</strong>: Crafting memorable graphics and layouts that balance aesthetics and communication goals.</p>
-      </div>
+      <a
+        href="#projects"
+        class="inline-block mt-4 bg-white text-black text-[11px] font-mono tracking-widest uppercase rounded-sm px-3 py-1 border border-black hover:bg-gray-200 transition"
+        >VIEW PROJECTS</a
+      >
     </div>
-    <button class="carousel-arrow next" aria-label="Next profession/skill">&#10095;</button>
-  </div>
-</section>
-
-<section id="tools-platforms" aria-label="Tools and Platforms skill percentage">
-  <h2 class="section-title">Tools & Platforms</h2>
-  <div class="tool-bar">
-    <div class="tool-label">Adobe After Effects (AE) <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 7 L5 3 L9 7" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"/></svg></div>
-    <div class="progress-bar-bg">
-      <div class="progress-bar-fill" style="width: 90%;"></div>
+    <div
+      class="absolute bottom-0 left-0 right-0 border-t border-white border-opacity-20"
+      style="height: 1px"
+    ></div>
+    <h2
+      class="absolute bottom-0 left-0 right-0 font-sans font-extralight text-[96px] sm:text-[120px] md:text-[160px] leading-[1] tracking-tight px-6 sm:px-10 md:px-20"
+      style="line-height: 1; color: white;"
+    >
+      ART FOR THE HEART
+    </h2>
+  </section>
+  <!-- About Section -->
+  <section
+    class="max-w-5xl mx-auto px-6 sm:px-10 md:px-20 py-16"
+    id="about"
+  >
+    <h3
+      class="text-3xl font-extralight tracking-wide mb-6 font-sans uppercase text-center"
+    >
+      About Me
+    </h3>
+    <div
+      class="text-gray-800 text-lg leading-relaxed max-w-3xl mx-auto text-center"
+    >
+      <p>
+        Hello! I'm a passionate creative professional specializing in graphic
+        design, digital art, and web development. I love transforming ideas
+        into visually compelling stories that inspire and engage.
+      </p>
+      <p class="mt-4">
+        With a background in fine arts and years of experience working with
+        diverse clients, I bring a unique blend of artistic flair and
+        technical expertise to every project.
+      </p>
     </div>
-  </div>
-  <div class="tool-bar">
-    <div class="tool-label">Adobe Photoshop (AP) <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 7 L5 3 L9 7" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"/></svg></div>
-    <div class="progress-bar-bg">
-      <div class="progress-bar-fill" style="width: 85%;"></div>
-    </div>
-  </div>
-  <div class="tool-bar">
-    <div class="tool-label">Canva <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 7 L5 3 L9 7" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"/></svg></div>
-    <div class="progress-bar-bg">
-      <div class="progress-bar-fill" style="width: 80%;"></div>
-    </div>
-  </div>
-  <div class="tool-bar">
-    <div class="tool-label">Figma <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 7 L5 3 L9 7" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"/></svg></div>
-    <div class="progress-bar-bg">
-      <div class="progress-bar-fill" style="width: 75%;"></div>
-    </div>
-  </div>
-  <div class="tool-bar">
-    <div class="tool-label">Prompt Engineering <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 7 L5 3 L9 7" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"/></svg></div>
-    <div class="progress-bar-bg">
-      <div class="progress-bar-fill" style="width: 70%;"></div>
-    </div>
-  </div>
-</section>
-
-<section id="businesses" aria-label="Businesses with image carousel and dropdown details">
-  <h2 class="section-title">Businesses & Brands</h2>
-
-  <!-- Nirvaan -->
-  <div class="business-item">
-    <h3>Nirvaan</h3>
-    <div class="business-carousel carousel" aria-label="Nirvaan image carousel">
-      <button class="carousel-arrow prev" aria-label="Previous Nirvaan image">&#10094;</button>
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="https://images.pexels.com/photos/1619311/pexels-photo-1619311.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Printed T-Shirts hanging in a store" />
+  </section>
+  <!-- Projects Section with Carousel showing 6 images, 4 visible -->
+  <section
+    class="max-w-7xl mx-auto px-6 sm:px-10 md:px-20 py-16 bg-gray-50"
+    id="projects"
+  >
+    <h3
+      class="text-3xl font-extralight tracking-wide mb-10 font-sans uppercase text-center"
+    >
+      My Projects
+    </h3>
+    <div class="carousel flex overflow-x-auto snap-x snap-mandatory gap-3 -mx-2 px-2">
+      <!-- Carousel Item 1 -->
+      <div
+        class="carousel-item bg-white rounded-lg shadow-sm border border-gray-200 p-4"
+      >
+        <img
+          alt="Abstract poster with geometric shapes in red, blue, and yellow"
+          class="w-full h-48 object-cover rounded mb-4"
+          src="https://storage.googleapis.com/a1aa/image/7e7ba10b-1b10-4349-de99-4016910e45e5.jpg"
+        />
+        <h4
+          class="font-semibold text-lg text-gray-900 mb-2 font-sans tracking-wide"
+        >
+          Geometric Abstract Poster
+        </h4>
+        <p class="text-sm text-gray-600 mb-4">
+          A vibrant poster design featuring geometric shapes in primary colors,
+          created for a modern art exhibition.
+        </p>
+        <div class="text-xs text-gray-500 font-mono uppercase tracking-widest">
+          Tools: Adobe Illustrator, Photoshop
         </div>
-        <div class="carousel-slide">
-          <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Fashion clothing display" />
+      </div>
+      <!-- Carousel Item 2 -->
+      <div
+        class="carousel-item bg-white rounded-lg shadow-sm border border-gray-200 p-4"
+      >
+        <img
+          alt="Abstract poster with black brush strokes on white background"
+          class="w-full h-48 object-cover rounded mb-4"
+          src="https://storage.googleapis.com/a1aa/image/1e545219-2c0b-45a6-2b89-1cc6ff4c1a64.jpg"
+        />
+        <h4
+          class="font-semibold text-lg text-gray-900 mb-2 font-sans tracking-wide"
+        >
+          Black Brush Strokes Poster
+        </h4>
+        <p class="text-sm text-gray-600 mb-4">
+          Bold and expressive brush stroke design used in branding for a
+          creative agency.
+        </p>
+        <div class="text-xs text-gray-500 font-mono uppercase tracking-widest">
+          Tools: Adobe Photoshop, Procreate
         </div>
       </div>
-      <button class="carousel-arrow next" aria-label="Next Nirvaan image">&#10095;</button>
+      <!-- Carousel Item 3 -->
+      <div
+        class="carousel-item bg-white rounded-lg shadow-sm border border-gray-200 p-4"
+      >
+        <img
+          alt="Abstract poster with green and purple shapes on beige background"
+          class="w-full h-48 object-cover rounded mb-4"
+          src="https://storage.googleapis.com/a1aa/image/e0f79c82-df0f-428b-0024-b832f81a936a.jpg"
+        />
+        <h4
+          class="font-semibold text-lg text-gray-900 mb-2 font-sans tracking-wide"
+        >
+          Green &amp; Purple Shapes Poster
+        </h4>
+        <p class="text-sm text-gray-600 mb-4">
+          Soft color palette poster designed for a wellness brand's marketing
+          campaign.
+        </p>
+        <div class="text-xs text-gray-500 font-mono uppercase tracking-widest">
+          Tools: Adobe Illustrator, Figma
+        </div>
+      </div>
+      <!-- Carousel Item 4 -->
+      <div
+        class="carousel-item bg-white rounded-lg shadow-sm border border-gray-200 p-4"
+      >
+        <img
+          alt="Abstract poster with yellow and orange circles on white background"
+          class="w-full h-48 object-cover rounded mb-4"
+          src="https://storage.googleapis.com/a1aa/image/ef106c94-3fa5-491e-e9b6-eabb70a9c501.jpg"
+        />
+        <h4
+          class="font-semibold text-lg text-gray-900 mb-2 font-sans tracking-wide"
+        >
+          Yellow Circles Poster
+        </h4>
+        <p class="text-sm text-gray-600 mb-4">
+          Bright and cheerful poster created for a children's art festival.
+        </p>
+        <div class="text-xs text-gray-500 font-mono uppercase tracking-widest">
+          Tools: Adobe Photoshop, Canva
+        </div>
+      </div>
+      <!-- Carousel Item 5 -->
+      <div
+        class="carousel-item bg-white rounded-lg shadow-sm border border-gray-200 p-4"
+      >
+        <img
+          alt="Abstract poster with red and black shapes"
+          class="w-full h-48 object-cover rounded mb-4"
+          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+        />
+        <h4
+          class="font-semibold text-lg text-gray-900 mb-2 font-sans tracking-wide"
+        >
+          Red & Black Abstract
+        </h4>
+        <p class="text-sm text-gray-600 mb-4">
+          Dynamic abstract poster with bold red and black shapes.
+        </p>
+        <div class="text-xs text-gray-500 font-mono uppercase tracking-widest">
+          Tools: Adobe Illustrator
+        </div>
+      </div>
+      <!-- Carousel Item 6 -->
+      <div
+        class="carousel-item bg-white rounded-lg shadow-sm border border-gray-200 p-4"
+      >
+        <img
+          alt="Abstract poster with blue and white waves"
+          class="w-full h-48 object-cover rounded mb-4"
+          src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=600&q=80"
+        />
+        <h4
+          class="font-semibold text-lg text-gray-900 mb-2 font-sans tracking-wide"
+        >
+          Blue Waves Poster
+        </h4>
+        <p class="text-sm text-gray-600 mb-4">
+          Calming abstract poster with blue and white wave patterns.
+        </p>
+        <div class="text-xs text-gray-500 font-mono uppercase tracking-widest">
+          Tools: Photoshop, Procreate
+        </div>
+      </div>
     </div>
-    <div class="business-dropdown">
-      <button class="dropdown-toggle" aria-expanded="false" aria-controls="nirvaan-details">
-        Details
+  </section>
+  <!-- Skills Section with Graphs -->
+  <section class="max-w-5xl mx-auto px-6 sm:px-10 md:px-20 py-16" id="skills">
+    <h3
+      class="text-3xl font-extralight tracking-wide mb-6 font-sans uppercase text-center"
+    >
+      Skills &amp; Expertise
+    </h3>
+    <div class="max-w-3xl mx-auto space-y-8">
+      <div>
+        <div class="space-y-4 max-w-md mx-auto">
+          <div>
+            <div
+              class="flex justify-between mb-1 font-mono text-xs uppercase tracking-widest"
+            >
+              <span>Adobe Photoshop</span>
+              <span>90%</span>
+            </div>
+            <div class="w-full bg-gray-300 rounded-full h-3">
+              <div class="bg-black h-3 rounded-full" style="width: 90%"></div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="flex justify-between mb-1 font-mono text-xs uppercase tracking-widest"
+            >
+              <span>Adobe Illustrator</span>
+              <span>85%</span>
+            </div>
+            <div class="w-full bg-gray-300 rounded-full h-3">
+              <div class="bg-black h-3 rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="flex justify-between mb-1 font-mono text-xs uppercase tracking-widest"
+            >
+              <span>Figma</span>
+              <span>75%</span>
+            </div>
+            <div class="w-full bg-gray-300 rounded-full h-3">
+              <div class="bg-black h-3 rounded-full" style="width: 75%"></div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="flex justify-between mb-1 font-mono text-xs uppercase tracking-widest"
+            >
+              <span>Procreate</span>
+              <span>70%</span>
+            </div>
+            <div class="w-full bg-gray-300 rounded-full h-3">
+              <div class="bg-black h-3 rounded-full" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-semibold text-xl mb-3 text-center">Other Skills</h4>
+        <ul
+          class="list-disc list-inside space-y-2 text-center text-gray-800 text-lg leading-relaxed"
+        >
+          <li>Graphic Design &amp; Branding</li>
+          <li>Digital Illustration</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- Brands Section -->
+  <section
+    class="max-w-7xl mx-auto px-6 sm:px-10 md:px-20 py-16 bg-gray-50"
+  >
+    <h3
+      class="text-3xl font-extralight tracking-wide mb-10 font-sans uppercase text-center"
+    >
+      Brands I've Worked With
+    </h3>
+    <div class="flex flex-wrap justify-center items-center gap-12">
+      <img
+        alt="Brand logo 1"
+        class="h-16 object-contain"
+        height="60"
+        src="https://storage.googleapis.com/a1aa/image/ace7a891-d522-4929-4fbc-5804e31d5a0e.jpg"
+        width="150"
+      />
+      <img
+        alt="Brand logo 2"
+        class="h-16 object-contain"
+        height="60"
+        src="https://storage.googleapis.com/a1aa/image/31eb1300-1f8b-43b0-14e5-79f78df69a62.jpg"
+        width="150"
+      />
+      <img
+        alt="Brand logo 3"
+        class="h-16 object-contain"
+        height="60"
+        src="https://storage.googleapis.com/a1aa/image/b7940d63-fa72-4bb0-36f3-d3acb86fb22a.jpg"
+        width="150"
+      />
+      <img
+        alt="Brand logo 4"
+        class="h-16 object-contain"
+        height="60"
+        src="https://storage.googleapis.com/a1aa/image/c47f13ed-ef90-4053-dd91-21eebd97b577.jpg"
+        width="150"
+      />
+      <img
+        alt="Brand logo 5"
+        class="h-16 object-contain"
+        height="60"
+        src="https://storage.googleapis.com/a1aa/image/3022ec06-9243-45f9-798c-c7c5b29da508.jpg"
+        width="150"
+      />
+    </div>
+  </section>
+  <!-- Contact Section with Location and Email -->
+  <section
+    class="bg-[#1a1a1a] text-white py-16 px-6 sm:px-10 md:px-20 text-center"
+    id="contact"
+  >
+    <h3
+      class="text-3xl font-extralight tracking-wide mb-6 font-sans uppercase"
+    >
+      Get In Touch
+    </h3>
+    <p
+      class="max-w-xl mx-auto mb-8 text-[14px] font-light leading-relaxed"
+    >
+      I'm currently available for freelance projects and collaborations. Feel
+      free to reach out!
+    </p>
+    <div class="max-w-md mx-auto space-y-6" style="">
+      <div class="flex items-center justify-center space-x-4" style="">
+        <i class="fas fa-map-marker-alt text-xl" style=""></i>
+        <span class="text-white underline" style=""
+          >Vikash Vihaar, Raipura, Raipur C.G.</span
+        >
+      </div>
+      <div class="flex items-center justify-center space-x-4" style="">
+        <i class="fas fa-envelope text-xl" style=""></i>
+        <a
+          class="text-white underline"
+          href="mailto:7wingroup@gmail.com"
+          style=""
+          >7wingroup@gmail.com</a
+        >
+      </div>
+    </div>
+    <form
+      class="max-w-md mx-auto mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
+      onsubmit="event.preventDefault(); alert('Thank you for reaching out! I will get back to you soon.');"
+    >
+      <input
+        aria-label="Your name"
+        class="w-full sm:flex-1 rounded-sm px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none"
+        placeholder="Your Name"
+        required=""
+        type="text"
+      />
+      <input
+        aria-label="Your email"
+        class="w-full sm:flex-1 rounded-sm px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none"
+        placeholder="Your Email"
+        required=""
+        type="email"
+      />
+      <button
+        class="bg-white text-black font-mono tracking-widest uppercase rounded-sm px-6 py-3 hover:bg-gray-200 transition"
+        type="submit"
+      >
+        Send
       </button>
-      <div class="dropdown-content" id="nirvaan-details" hidden>
-        <p><strong>Type:</strong> Printed T-shirt & Fashion Brand</p>
-        <p><strong>Products:</strong> Oversized T-shirts, Premium T-shirts, Crop Tops, Jackets, Hoodies, Belts, Wallets, Rings, Ear Tops</p>
-        <p><strong>Website:</strong> <a href="https://nirvaan.store" target="_blank" rel="noopener noreferrer">Nirvaan.Store</a></p>
-        <p><strong>Marketing:</strong> SEO-friendly product descriptions and blog content in progress</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Urban Store -->
-  <div class="business-item">
-    <h3>Urban Store</h3>
-    <div class="business-carousel carousel" aria-label="Urban Store image carousel">
-      <button class="carousel-arrow prev" aria-label="Previous Urban Store image">&#10094;</button>
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="https://images.pexels.com/photos/6913179/pexels-photo-6913179.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Urban fashion store interior" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://images.pexels.com/photos/2983463/pexels-photo-2983463.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Urban clothing hanging racks" />
-        </div>
-      </div>
-      <button class="carousel-arrow next" aria-label="Next Urban Store image">&#10095;</button>
-    </div>
-    <div class="business-dropdown">
-      <button class="dropdown-toggle" aria-expanded="false" aria-controls="urbanstore-details">
-        Details
-      </button>
-      <div class="dropdown-content" id="urbanstore-details" hidden>
-        <p><strong>Tagline:</strong> "All Products, All Possibilities"</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Aayu Water Solution -->
-  <div class="business-item">
-    <h3>Aayu Water Solution</h3>
-    <div class="business-carousel carousel" aria-label="Aayu Water Solution image carousel">
-      <button class="carousel-arrow prev" aria-label="Previous Aayu Water Solution image">&#10094;</button>
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Water purification system" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://images.pexels.com/photos/853199/pexels-photo-853199.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Modern water system pipes" />
-        </div>
-      </div>
-      <button class="carousel-arrow next" aria-label="Next Aayu Water Solution image">&#10095;</button>
-    </div>
-    <div class="business-dropdown">
-      <button class="dropdown-toggle" aria-expanded="false" aria-controls="aayu-details">
-        Details
-      </button>
-      <div class="dropdown-content" id="aayu-details" hidden>
-        <p><strong>Type:</strong> Water Solution Business</p>
-        <p><strong>Website Design:</strong> Modern, professional, e-commerce enabled</p>
-        <p><strong>Theme Colors:</strong> Blue &amp; White</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- DigitalTrade.ai -->
-  <div class="business-item">
-    <h3>DigitalTrade.ai</h3>
-    <div class="business-carousel carousel" aria-label="DigitalTrade.ai image carousel">
-      <button class="carousel-arrow prev" aria-label="Previous DigitalTrade.ai image">&#10094;</button>
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="https://images.pexels.com/photos/3183198/pexels-photo-3183198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Digital platform interface" />
-        </div>
-        <div class="carousel-slide">
-          <img src="https://images.pexels.com/photos/1181407/pexels-photo-1181407.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Creative digital workspace" />
-        </div>
-      </div>
-      <button class="carousel-arrow next" aria-label="Next DigitalTrade.ai image">&#10095;</button>
-    </div>
-    <div class="business-dropdown">
-      <button class="dropdown-toggle" aria-expanded="false" aria-controls="digitaltrade-details">
-        Details
-      </button>
-      <div class="dropdown-content" id="digitaltrade-details" hidden>
-        <p><strong>Type:</strong> Platform for digital creators</p>
-        <p><strong>Instagram:</strong> <a href="https://instagram.com/digitaltrade.ai" target="_blank" rel="noopener noreferrer">@digitaltrade.ai</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-left" aria-label="Social media and trademark">
-    <div class="footer-social" aria-label="Social media links">
-      <a href="https://instagram.com/digitaltrade.ai" target="_blank" rel="noopener noreferrer" aria-label="Instagram" tabindex="0" title="Instagram">
-        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.75-.25a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/></svg>
-      </a>
-      <a href="https://linkedin.com/in/indrajeet-pisda" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" tabindex="0" title="LinkedIn">
-        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M4.98 3.5a2.48 2.48 0 11-.001 4.961A2.48 2.48 0 014.98 3.5zm.02 4.75H2v13.75h3v-13.75zM8.5 8.5h2.88v1.82h.04c.4-.75 1.36-1.54 2.8-1.54 3 0 3.55 2 3.55 4.6v5.88h-3v-5.22c0-1.25-.02-2.85-1.73-2.85-1.73 0-1.99 1.35-1.99 2.75v5.33h-3v-13.75z"/></svg>
-      </a>
-      <a href="https://github.com/indar321" target="_blank" rel="noopener noreferrer" aria-label="GitHub" tabindex="0" title="GitHub">
-        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M12 2C6.48 2 2 6.48 2 12a10 10 0 006.84 9.53c.5.1.68-.22.68-.48v-1.71c-2.78.6-3.37-1.34-3.37-1.34-.46-1.17-1.12-1.48-1.12-1.48-.92-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.36 1.08 2.94.83.1-.65.36-1.08.66-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.08.39-1.97 1.03-2.67-.1-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.02a9.5 9.5 0 015 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.36.2 2.37.1 2.62.64.7 1.04 1.59 1.04 2.67 0 3.85-2.34 4.7-4.58 4.94.37.32.7.95.7 1.92v2.85c0 .27.18.58.7.48A10 10 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-      </a>
-      <a href="https://behance.net/indrajeetpisda" target="_blank" rel="noopener noreferrer" aria-label="Behance" tabindex="0" title="Behance">
-        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M22 9.8h-4.5v1.5h4.3c-.2.9-1.1 2.5-3.9 2.5-3.3 0-3.9-2.2-3.9-2.8 0-1.8 1.4-2.9 3-2.9 2.3 0 3.3 1.7 3.4 2.5zm-4 3c1 0 1.6-.7 1.9-1.4h-2.4v.1c.1.6.6 1.3 1.5 1.3zm-5-6.5h5v1h-4v1h3v1h-3v4h-1.5V6.3zm-2.5 6.3c-.3 0-.5-.3-.5-.5V8h5v.5c0 .3-.3.5-.5.5H9zM2 6.8v10.3H8.5C13 17.2 14 13.6 14 12c0-2.7-1.4-5.2-6-4.8H2zm5.2 7.3H3.5v-5h3.7c1.9 0 3.1 1.1 3.1 2.5 0 1.2-.6 2.5-3.1 2.5z"/></svg>
-      </a>
-      <a href="https://dribbble.com/indrajeetpisda" target="_blank" rel="noopener noreferrer" aria-label="Dribbble" tabindex="0" title="Dribbble">
-        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M12 2C6.5 2 2 6.5 2 12c0 5.5 4.5 10 10 10s10-4.5 10-10C22 6.5 17.5 2 12 2zm6.2 3.1A8.06 8.06 0 0119.9 12c0 .26-.02.53-.04.79A14.06 14.06 0 0013 9.8a42.8 42.8 0 015.2-4.7zM12 4c3.3 0 6 2 7 4.9a45.17 45.17 0 00-9.2 1.9 41.6 41.6 0 00-3.2-5.1A8.5 8.5 0 0112 4zm-7.5.8a8.4 8.4 0 013.2 4.5 43.75 43.75 0 00-6.3 1.6 8.1 8.1 0 013.1-6.1zm-2.2 9A45.75 45.75 0 016.3 16c.1 0 .6.1 1.3.1a40.88 40.88 0 012.8-8.4 46.2 46.2 0 00-7.9-2A8.04 8.04 0 012.3 14.1zm14.4 4.7A8.03 8.03 0 0112 20c-1.1 0-2.2-.4-3.1-1.1a39.57 39.57 0 01-2-10.2c0-.3 0-.6.03-.9 3.1-1 6.9-1 11 3.2a7.95 7.95 0 01-3.3 12zm-1.9-1c.7-1.1 1-2.5 1.2-3.8a40.61 40.61 0 013.4 2.3 7.7 7.7 0 01-4.6 1.5zm3.7-3.6c-.8-.9-1.7-1.7-2.8-2.4a42.36 42.36 0 014.3-3.5 7.77 7.77 0 01-1.5 5.9z"/></svg>
-      </a>
-      <a href="https://pinterest.com/nirvaan" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" tabindex="0" title="Pinterest">
-        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.4 2.9 8.1 7 9.4-.1-1.1-.1-2.7.1-3.9.1-.4.7-2.6.7-2.6s-.2-.4-.2-1c0-1 .6-1.7 1.3-1.7.6 0 .9.5.9 1.1 0 .7-.4 1.8-.6 2.7-.2.8.4 1.4 1.2 1.4 1.5 0 2.6-1.5 2.6-3.8 0-2-1.5-3.5-3.7-3.5-2.5 0-4 1.9-4 3.9 0 .7.3 1.5.7 2 .2.2.2.3.2.6-.1.2-.4.8-.5 1-.2.4-.7.5-1 .4-2.7-1.1-4.3-4.1-4.3-7 0-5.1 3.7-9.8 10.8-9.8 5.6 0 9.8 4 9.8 9.4 0 5.6-3.5 10.1-8.1 10.1-1.6 0-3.1-.8-3.6-1.8l-.9 3.5a.4.4 0 01-.6.3c-2.4-1-3.5-3.9-3.5-7a10.41 10.41 0 0110.6-10z"/></svg>
-      </a>
-    </div>
-    <div class="footer-trademark">© 2024 Indrajeet Pisda — Branding Expert &amp; Creative Designer</div>
-  </div>
-</footer>
-
-<!-- Subscribe box -->
-<div id="subscribe-container" role="region" aria-label="Subscribe to newsletter and location info">
-  <h4>Subscribe to Newsletter</h4>
-  <p>Location: Vikash Vihaar, Raipur C.G.</p>
-  <form id="subscribe-form" aria-label="Subscribe form">
-    <input type="email" id="email" name="email" placeholder="Your email" required aria-required="true" aria-label="Email address" />
-    <button type="submit" aria-label="Subscribe">Subscribe</button>
-  </form>
-  <div id="subscribe-message" style="padding-top:0.5rem;"></div>
-</div>
-
-<!-- Scroll to Top button -->
-<button id="scrollToTopBtn" aria-label="Scroll to top" title="Scroll to top" aria-live="polite">
-  <svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false" width="16" height="16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" style="transform: rotate(0deg);">
-    <polyline points="6 15 12 9 18 15"></polyline>
-  </svg>
-</button>
-
-<script>
-// Smooth scroll nav links
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    let id = link.getAttribute('href').slice(1);
-    let section = document.getElementById(id);
-    if (section) section.scrollIntoView({behavior: 'smooth'});
-  });
-});
-
-// Generic carousel init
-function initCarousel(container) {
-  const track = container.querySelector('.carousel-track');
-  const slides = [...track.children];
-  const prevBtn = container.querySelector('.carousel-arrow.prev');
-  const nextBtn = container.querySelector('.carousel-arrow.next');
-  let currentIndex = 0;
-
-  function update() {
-    const slideWidth = slides[0].clientWidth;
-    track.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
-    slides.forEach((slide, idx) => {
-      slide.setAttribute('aria-hidden', idx !== currentIndex);
-    });
-  }
-
-  prevBtn.onclick = () => {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    update();
-  };
-  nextBtn.onclick = () => {
-    currentIndex = (currentIndex + 1) % slides.length;
-    update();
-  };
-
-  // Swipe support
-  let startX = null;
-
-  track.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-  });
-  track.addEventListener('touchmove', e => {
-    if (startX === null) return;
-    let diff = startX - e.touches[0].clientX;
-    if (diff > 50) { // swipe left
-      nextBtn.click();
-      startX = null;
-    } else if (diff < -50) { // swipe right
-      prevBtn.click();
-      startX = null;
-    }
-  });
-
-  update();
-}
-
-// Dropdown toggle
-document.querySelectorAll('.dropdown-toggle').forEach(button => {
-  button.addEventListener('click', () => {
-    const contentId = button.getAttribute('aria-controls');
-    const content = document.getElementById(contentId);
-    const isOpen = content.classList.toggle('open');
-    button.setAttribute('aria-expanded', isOpen);
-    if (isOpen) {
-      content.removeAttribute('hidden');
-    } else {
-      content.setAttribute('hidden', '');
-    }
-  });
-});
-
-// Progress bar animation and carousels init
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.progress-bar-fill').forEach(bar => {
-    const width = bar.style.width;
-    bar.style.width = '0%';
-    setTimeout(() => {
-      bar.style.width = width;
-    }, 150);
-  });
-
-  document.querySelectorAll('.carousel').forEach(carousel => initCarousel(carousel));
-
-  // Subscribe form
-  const form = document.getElementById('subscribe-form');
-  const msg = document.getElementById('subscribe-message');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const email = form.email.value.trim();
-    if (!email) {
-      msg.textContent = 'Please enter a valid email address.';
-      msg.style.color = '#ef5350';
-      return;
-    }
-    msg.style.color = '#ffffff';
-    msg.textContent = 'Thank you for subscribing!';
-    form.reset();
-    setTimeout(() => {
-      msg.textContent = '';
-    }, 4500);
-  });
-
-  // Scroll to Top button show/hide & effect
-  const scrollBtn = document.getElementById('scrollToTopBtn');
-  function updateScrollBtn() {
-    const scrollTop = window.scrollY;
-    if(scrollTop > 100) {
-      scrollBtn.style.display = 'flex';
-    }
-    else {
-      scrollBtn.style.display = 'none';
-    }
-  }
-  updateScrollBtn();
-  window.addEventListener('scroll', updateScrollBtn);
-  scrollBtn.addEventListener('click', () => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  });
-});
-</script>
-
+    </form>
+  </section>
+  <!-- Footer with icons only -->
+  <footer
+    class="bg-[#1a1a1a] text-white px-6 sm:px-10 md:px-20 py-8 flex justify-center space-x-8"
+  >
+    <a
+      aria-label="Website"
+      class="hover:text-gray-400 transition"
+      href="https://yourwebsite.com"
+      rel="noopener noreferrer"
+      target="_blank"
+      ><i class="fas fa-globe fa-lg"></i
+    ></a>
+    <a
+      aria-label="LinkedIn"
+      class="hover:text-gray-400 transition"
+      href="https://linkedin.com/in/yourprofile"
+      rel="noopener noreferrer"
+      target="_blank"
+      ><i class="fab fa-linkedin fa-lg"></i
+    ></a>
+    <a
+      aria-label="GitHub"
+      class="hover:text-gray-400 transition"
+      href="https://github.com/yourusername"
+      rel="noopener noreferrer"
+      target="_blank"
+      ><i class="fab fa-github fa-lg"></i
+    ></a>
+    <a
+      aria-label="Twitter"
+      class="hover:text-gray-400 transition"
+      href="https://twitter.com/yourhandle"
+      rel="noopener noreferrer"
+      target="_blank"
+      ><i class="fab fa-twitter fa-lg"></i
+    ></a>
+    <a
+      aria-label="Instagram"
+      class="hover:text-gray-400 transition"
+      href="https://instagram.com/yourhandle"
+      rel="noopener noreferrer"
+      target="_blank"
+      ><i class="fab fa-instagram fa-lg"></i
+    ></a>
+  </footer>
 </body>
 </html>
